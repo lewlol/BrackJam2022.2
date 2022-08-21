@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 28374074}
   - component: {fileID: 28374073}
   - component: {fileID: 28374072}
+  - component: {fileID: 28374078}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -274,6 +275,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
+--- !u!114 &28374078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28374071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730a45a201d1aa44dac3842a6ae4dd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeBullet: {fileID: 3986455979624542089, guid: e5c3ecb1ceee6924998b5d96e283d827, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
