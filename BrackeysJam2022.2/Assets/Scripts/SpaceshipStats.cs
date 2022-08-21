@@ -19,4 +19,8 @@ public class SpaceshipStats : MonoBehaviour
         maxFuel = 100;
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
 }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Variables")]
     public float lifetime;
+    public float damage;
+    [Header("Bools")]
     public bool passThrough;
 
     private void Awake()
@@ -15,19 +18,18 @@ public class Bullet : MonoBehaviour
     {
         if (!passThrough)
         {
-            if (gameObject.tag == "Bullet")
+            if (collision.gameObject.tag == "Enemy")
             {
-                if (collision.gameObject.tag == "Enemy")
-                {
-                    Destroy(gameObject);
-                }
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                Destroy(gameObject);
+                return;
             }
-            if (gameObject.tag == "Enemy")
+        }
+        if (passThrough)
+        {
+            if (collision.gameObject.tag == "Enemy")
             {
-                if (collision.gameObject.tag == "Player")
-                {
-                    Destroy(gameObject);
-                }
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
             }
         }
     }
