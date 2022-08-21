@@ -12,9 +12,11 @@ public class SpaceshipMovement : MonoBehaviour
 
     public float runSpeed = 10.0f;
 
+    private SpaceshipStats stats;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        stats = GetComponent<SpaceshipStats>();
     }
 
     void Update()
@@ -32,7 +34,15 @@ public class SpaceshipMovement : MonoBehaviour
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
-
+        FuelDeplete();
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+    }
+
+    void FuelDeplete()
+    {
+        if(horizontal != 0 || vertical != 0)
+        {
+            stats.fuel -= Time.deltaTime;
+        }
     }
 }
