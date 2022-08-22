@@ -7,12 +7,25 @@ public class Planet : MonoBehaviour
     public float health;
     public float maxHealth;
 
+    float speed = 1.0f; //how fast it shakes
+    float amount = 1.0f; //how much it shakes
+
     [SerializeField] private GameObject fuel;
 
+    [SerializeField]bool shaking;
+    Vector2 startPos;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
         health = maxHealth;
+    }
+    private void FixedUpdate()
+    {
+        float x = gameObject.transform.position.x * Mathf.Sin(Time.time * speed) * amount;
+        float y = gameObject.transform.position.y * Mathf.Sin(Time.time * speed) * amount;
+        float z = gameObject.transform.position.z;
+
+        gameObject.transform.position = new Vector3(x, y, z);
     }
     public void TakeDamage(float damage)
     {
@@ -21,9 +34,7 @@ public class Planet : MonoBehaviour
         {
             SpawnFuelCan();
             Destroy(gameObject);
-        }
-
-        //ADD SOME SHAKE HERE
+        }  
     }
     void SpawnFuelCan()
     {
@@ -35,5 +46,4 @@ public class Planet : MonoBehaviour
             Instantiate(fuel, spawnPos, Quaternion.identity);
         }
     }
-
 }

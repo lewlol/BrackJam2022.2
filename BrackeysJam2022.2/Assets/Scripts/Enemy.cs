@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private EnemyData eData;
+
+    //Enemy Stats
+    [Header("Stats")]
     public float health;
     public float speed;
     public float extraspeed;
+
+    //Types
+    [Header("Enemy Type")]
+    [SerializeField] bool neutralType; //Changes States - Normal Type of Alien
+    [SerializeField] bool friendlyType; //Never Attacks
+    [SerializeField] bool agressiveType; //Always Agressive State
+    [SerializeField] bool patrollingType; //Patrolling Randomly in Space
+    [SerializeField] bool kamikazeType; //Flys into the Player Exploding
+
+    //Weapon Stats
+    [Header("Weapon Stats")]
     public float bulspeed;
-    [SerializeField] private GameObject bullet;
-   
-    
-    [SerializeField] private GameObject parentPlanet;
-    [SerializeField] private GameObject target;
+    public float bulDelay;
 
     //States
     [Header("State")]
@@ -20,15 +31,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool neutralState;
     [SerializeField] bool agressiveState;
 
-    //Types
-    [Header("Enemy Type")]
-   
-    
-    [SerializeField] bool neutralType; //Changes States - Normal Type of Alien
-    [SerializeField] bool friendlyType; //Never Attacks
-    [SerializeField] bool agressiveType; //Always Agressive State
-    [SerializeField] bool patrollingType; //Patrolling Randomly in Space
+    //Other Assignables
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject parentPlanet;
+    [SerializeField] private GameObject target;
 
+    //Random Vars
     public float countdown;
     float delay = 0.15f;
     float attackRadius = 5f;
@@ -40,6 +48,8 @@ public class Enemy : MonoBehaviour
         neutralState = true;
         target = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+
+        AssignStats();
     }
 
     private void FixedUpdate()
@@ -126,5 +136,19 @@ public class Enemy : MonoBehaviour
         Debug.Log(count);
         yield return new WaitForSeconds(count);
         foundLocation = true;
+    }
+
+    void AssignStats()
+    {
+        //Enemy Stats
+        health = eData.health;
+        speed = eData.speed;
+        extraspeed = eData.eSpeed;
+
+        //Enemy Type
+        friendlyType = eData.friendly;
+        neutralType = eData.neutral;
+        agressiveType = eData.agressive;
+
     }
 }
