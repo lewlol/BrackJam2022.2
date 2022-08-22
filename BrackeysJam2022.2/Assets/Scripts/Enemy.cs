@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float extraspeed;
     public float bulspeed;
     [SerializeField] private GameObject bullet;
+   
+    
     [SerializeField] private GameObject parentPlanet;
     [SerializeField] private GameObject target;
 
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour
 
     //Types
     [Header("Enemy Type")]
+   
+    
     [SerializeField] bool neutralType; //Changes States - Normal Type of Alien
     [SerializeField] bool friendlyType; //Never Attacks
     [SerializeField] bool agressiveType; //Always Agressive State
@@ -48,6 +52,7 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            
         }
     }
 
