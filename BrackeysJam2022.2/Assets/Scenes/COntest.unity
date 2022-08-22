@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 429753164}
   - component: {fileID: 429753162}
   - component: {fileID: 429753163}
+  - component: {fileID: 429753165}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -215,7 +216,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -254,6 +255,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &429753165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429753161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b684c830063eb4fa61e8bfe1f8e050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampTime: 0.3
+  target: {fileID: 578840169}
 --- !u!1 &578840161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   speed: 2
+  extraspeed: 0
   bulspeed: 3
   bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}
   parentPlanet: {fileID: 721405317}
