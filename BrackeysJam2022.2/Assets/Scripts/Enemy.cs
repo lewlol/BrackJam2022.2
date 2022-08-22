@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float health;
     public float speed;
+    public float extraspeed;
     public float bulspeed;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject parentPlanet;
@@ -27,10 +28,14 @@ public class Enemy : MonoBehaviour
     public float countdown;
     float delay = 0.15f;
     float attackRadius = 5f;
+    Vector2 movePos;
+    bool foundLocation;
+    Rigidbody2D rb;
     private void Start()
     {
         neutralState = true;
         target = GameObject.FindWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -50,7 +55,19 @@ public class Enemy : MonoBehaviour
     {
         if (friendlyState) //Friendly State - Completely Ignores Player - Gain This for Heling out aliens
         {
-            //Patrol Planet
+            if (foundLocation) //Find a New Location
+            {
+                Vector2 planetPos = parentPlanet.transform.position;
+                float xOffset = Random.Range(-25, 25);
+                float yOffset = Random.Range(-25, 25);
+                movePos = new Vector2(planetPos.x + xOffset, planetPos.y + yOffset);
+                foundLocation = false;
+            }
+            if (!foundLocation) //Travel to New Location
+            {
+                transform.position = Vector2.MoveTowards(transform.position, movePos, speed * Time.deltaTime);
+            }
+
         }
         else if (neutralState) //Neutral State - Docile Until the Player Attacks alien or Planet - Starting State
         {
@@ -58,6 +75,9 @@ public class Enemy : MonoBehaviour
         }
         else if (agressiveState) //Aggressive State - Attacking State for when the Player is Agressive
         {
+            //Look At Player
+            transform.rotation = Quaternion.FromToRotation(transform.position, -target.transform.position);
+
             //Distance Calc and Shooting Timer
             countdown = delay -= Time.deltaTime;
             var distance = Vector3.Distance(transform.position, target.transform.position);
