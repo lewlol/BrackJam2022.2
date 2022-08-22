@@ -7,13 +7,11 @@ public class Planet : MonoBehaviour
     public float health;
     public float maxHealth;
 
-    float speed = 1.0f; //how fast it shakes
     float amount = 1.0f; //how much it shakes
 
     [SerializeField] private GameObject fuel;
 
     [SerializeField]bool shaking;
-    Vector2 startPos;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
@@ -21,19 +19,21 @@ public class Planet : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        float x = gameObject.transform.position.x * Mathf.Sin(Time.time * speed) * amount;
-        float y = gameObject.transform.position.y * Mathf.Sin(Time.time * speed) * amount;
-        float z = gameObject.transform.position.z;
+        if (shaking)
+        {
+            Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * amount);
 
-        gameObject.transform.position = new Vector3(x, y, z);
+            transform.position = newPos;
+        }
     }
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+        StartCoroutine(Shaking());
+        if (health <= 0)
         {
             SpawnFuelCan();
-            Destroy(gameObject);
+            Destroy(gameObject);  
         }  
     }
     void SpawnFuelCan()
@@ -45,5 +45,20 @@ public class Planet : MonoBehaviour
             Vector3 spawnPos = gameObject.transform.position + offset;
             Instantiate(fuel, spawnPos, Quaternion.identity);
         }
+    }
+
+    IEnumerator Shaking()
+    {
+        Vector3 ogPos = transform.position;
+
+        if(shaking == false)
+        {
+            shaking = true;
+        }
+
+        yield return new WaitForSeconds(0.25f);
+
+        shaking = false;
+        transform.position = ogPos;
     }
 }
