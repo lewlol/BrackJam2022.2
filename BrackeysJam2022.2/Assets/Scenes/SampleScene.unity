@@ -134,11 +134,11 @@ GameObject:
   - component: {fileID: 28374076}
   - component: {fileID: 28374075}
   - component: {fileID: 28374077}
-  - component: {fileID: 28374074}
   - component: {fileID: 28374078}
   - component: {fileID: 28374073}
   - component: {fileID: 28374072}
   - component: {fileID: 28374079}
+  - component: {fileID: 28374080}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Player
@@ -183,19 +183,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &28374074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28374071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e3c08a7ba35e1e40a1a2f4e9b8ad90e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: 10
 --- !u!212 &28374075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -289,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBullet: {fileID: 3986455979624542089, guid: e5c3ecb1ceee6924998b5d96e283d827, type: 3}
+  bSpeed: 5
 --- !u!114 &28374079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +293,21 @@ MonoBehaviour:
   maxHealth: 0
   fuel: 0
   maxFuel: 0
+--- !u!114 &28374080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28374071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b7126916cf8dd4f9884e85dc70e49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 3
+  rotationSpeed: 3
+  extraspeed: 15
 --- !u!1 &254078743
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +858,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  speed: 3
+  bulspeed: 3
+  bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}
+  parentPlanet: {fileID: 254078743}
+  target: {fileID: 28374071}
+  friendlyState: 0
+  neutralState: 0
+  agressiveState: 0
+  neutralType: 0
+  friendlyType: 0
+  agressiveType: 0
+  patrollingType: 0
+  countdown: 0
 --- !u!50 &1010041119
 Rigidbody2D:
   serializedVersion: 4

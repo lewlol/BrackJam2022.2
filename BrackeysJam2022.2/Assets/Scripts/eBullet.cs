@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class eBullet : MonoBehaviour
 {
     [Header("Variables")]
     public float lifetime;
@@ -18,16 +18,13 @@ public class Bullet : MonoBehaviour
     {
         if (!passThrough)
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.tag == "Player")
             {
-                if(gameObject.GetComponent<Enemy>() != null)
-                {
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                }
+                collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
                 Destroy(gameObject);
                 return;
             }
-            if(collision.gameObject.tag == "Planet")
+            if (collision.gameObject.tag == "Planet")
             {
                 collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
                 Destroy(gameObject);
@@ -36,9 +33,9 @@ public class Bullet : MonoBehaviour
         }
         if (passThrough)
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.tag == "Player")
             {
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
             }
             if (collision.gameObject.tag == "Planet")
             {

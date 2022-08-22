@@ -8,7 +8,7 @@ public class FuelCan : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<SpaceshipStats>().fuel += 3f;
+            collision.gameObject.GetComponent<SpaceshipStats>().fuel += 12f;
             Destroy(gameObject);
         }
     }

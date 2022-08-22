@@ -5,26 +5,37 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health;
+    public float speed;
+    public float bulspeed;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject parentPlanet;
+    [SerializeField] private GameObject target;
 
     //States
-    bool friendlyState;
-    bool neutralState;
-    bool agressiveState;
+    [Header("State")]
+    [SerializeField] bool friendlyState;
+    [SerializeField] bool neutralState;
+    [SerializeField] bool agressiveState;
 
     //Types
-    bool neutralType; //Changes States - Normal Type of Alien
-    bool friendlyType; //Never Attacks
-    bool agressiveType; //Always Agressive State
-    bool patrollingType; //Patrolling Randomly in Space
+    [Header("Enemy Type")]
+    [SerializeField] bool neutralType; //Changes States - Normal Type of Alien
+    [SerializeField] bool friendlyType; //Never Attacks
+    [SerializeField] bool agressiveType; //Always Agressive State
+    [SerializeField] bool patrollingType; //Patrolling Randomly in Space
 
+    public float countdown;
+    float delay = 0.15f;
+    float attackRadius = 5f;
     private void Start()
     {
         neutralState = true;
+        target = GameObject.FindWithTag("Player");
     }
 
     private void FixedUpdate()
     {
-        Movement();
+        Movement(); 
     }
     public void TakeDamage(float damage)
     {
@@ -47,8 +58,30 @@ public class Enemy : MonoBehaviour
         }
         else if (agressiveState) //Aggressive State - Attacking State for when the Player is Agressive
         {
-            //Chase Player if in certain Distance
-            //Shoot At Player
+            //Distance Calc and Shooting Timer
+            countdown = delay -= Time.deltaTime;
+            var distance = Vector3.Distance(transform.position, target.transform.position);
+
+            //Charge At Player
+            if(distance > attackRadius)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            }
+
+            //Stop and Shoot
+            if (distance <= attackRadius)
+            {
+                if (countdown <= 0)
+                {
+                    GameObject bul = Instantiate(bullet, transform.position, transform.rotation);
+                    Rigidbody2D bulRB = bul.GetComponent<Rigidbody2D>();
+                    Vector2 direction = transform.position - target.transform.position;
+                    bulRB.AddForce(-direction * bulspeed, ForceMode2D.Impulse);
+                    bullet.GetComponent<eBullet>().lifetime = 1.5f;
+
+                    delay = 0.5f;
+                }
+            }
         }
     }
 }
