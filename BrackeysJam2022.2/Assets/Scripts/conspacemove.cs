@@ -9,9 +9,11 @@ public class conspacemove : MonoBehaviour
 
     public float maxVelocity = 3;
     public float rotationSpeed = 3;
-    public float extraspeed = 1;
+    public float extraspeed = 15;
     float yAxis;
     float xAxis;
+  
+  
         
 
     private SpaceshipStats stats;
@@ -27,6 +29,11 @@ public class conspacemove : MonoBehaviour
     {
         yAxis = Input.GetAxis("Vertical");
         xAxis = Input.GetAxis("Horizontal");
+        
+        if(Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f)
+        {
+            Boost();
+        }
     }
 
     private void FixedUpdate()
@@ -35,13 +42,6 @@ public class conspacemove : MonoBehaviour
         Fueldeplete();
     }
 
-    private void ClampVelocity()
-    {
-        float x = Mathf.Clamp(rb.velocity.x, -maxVelocity, maxVelocity);
-        float y = Mathf.Clamp(rb.velocity.y, -maxVelocity, maxVelocity);
-
-        rb.velocity = new Vector2(x, y);
-    }
 
     private void ThrustForward(float amount)
     {
@@ -55,6 +55,21 @@ public class conspacemove : MonoBehaviour
         {
             stats.fuel -= Time.deltaTime;
         }
+    }
+
+    void Boost()
+    {
+        StartCoroutine(Boosting());
+    }
+    IEnumerator Boosting()
+    {
+        stats.fuel -= 5;
+        yield return new WaitForSeconds(0.1f);
+        extraspeed = 100;
+        yield return new WaitForSeconds(0.2f);
+        extraspeed = 15;
+        
+
     }
 
 

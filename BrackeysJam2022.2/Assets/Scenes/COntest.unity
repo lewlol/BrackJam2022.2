@@ -246,7 +246,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429753161}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1086,6 +1086,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  speed: 2
+  bulspeed: 3
+  bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}
+  parentPlanet: {fileID: 721405317}
+  target: {fileID: 578840161}
+  friendlyState: 0
+  neutralState: 0
+  agressiveState: 1
+  neutralType: 0
+  friendlyType: 0
+  agressiveType: 0
+  patrollingType: 0
+  countdown: 0
 --- !u!50 &1970684893
 Rigidbody2D:
   serializedVersion: 4
