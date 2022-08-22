@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 578840171}
   - component: {fileID: 578840170}
   - component: {fileID: 578840163}
+  - component: {fileID: 578840172}
   - component: {fileID: 578840162}
   m_Layer: 0
   m_Name: Spaceship
@@ -306,8 +307,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.8
-  m_LinearDrag: 3
-  m_AngularDrag: 3
+  m_LinearDrag: 2.5
+  m_AngularDrag: 2.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -343,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBullet: {fileID: 3986455979624542089, guid: e5c3ecb1ceee6924998b5d96e283d827, type: 3}
+  bSpeed: 9
 --- !u!212 &578840168
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -424,7 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVelocity: 10
   rotationSpeed: 1
-  extraspeed: 3
+  extraspeed: 15
 --- !u!114 &578840171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +440,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 429753162}
+--- !u!114 &578840172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578840161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accdd8a9f3ed37b4285d3d8821b5af4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 764082639}
+  fuel: {fileID: 1180680000}
+  stats: {fileID: 578840162}
 --- !u!1 &721405317
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +466,7 @@ GameObject:
   - component: {fileID: 721405320}
   - component: {fileID: 721405319}
   - component: {fileID: 721405318}
+  - component: {fileID: 721405321}
   m_Layer: 0
   m_Name: Molten
   m_TagString: Untagged
@@ -543,6 +561,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &721405321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721405317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c74503bb2f86f47b0fae58bb546251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.05
 --- !u!1 &764082635
 GameObject:
   m_ObjectHideFlags: 0

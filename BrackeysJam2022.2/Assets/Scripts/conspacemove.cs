@@ -10,20 +10,29 @@ public class conspacemove : MonoBehaviour
     public float maxVelocity = 3;
     public float rotationSpeed = 3;
     public float extraspeed = 1;
+    float yAxis;
+    float xAxis;
+        
 
+    private SpaceshipStats stats;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();  
+        stats = GetComponent<SpaceshipStats>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        float yAxis = Input.GetAxis("Vertical");
-        float xAxis = Input.GetAxis("Horizontal");
+        yAxis = Input.GetAxis("Vertical");
+        xAxis = Input.GetAxis("Horizontal");
+    }
 
+    private void FixedUpdate()
+    {
         ThrustForward(yAxis);
-      
+        Fueldeplete();
     }
 
     private void ClampVelocity()
@@ -38,6 +47,14 @@ public class conspacemove : MonoBehaviour
     {
         Vector2 force = transform.up * amount * extraspeed;
         rb.AddForce(force);
+    }
+
+    void Fueldeplete()
+    {
+       if(xAxis != 0 || yAxis != 0)
+        {
+            stats.fuel -= Time.deltaTime;
+        }
     }
 
 
