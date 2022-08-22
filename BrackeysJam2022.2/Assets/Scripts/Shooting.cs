@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private GameObject activeBullet;
-    private float bSpeed = 5f;
+    public float bSpeed = 5f;
     private float bulletLife = 2f;
 
     private void Update()
