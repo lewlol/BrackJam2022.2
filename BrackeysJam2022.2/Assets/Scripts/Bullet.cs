@@ -24,12 +24,22 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
+            if(collision.gameObject.tag == "Planet")
+            {
+                collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
+                Destroy(gameObject);
+                return;
+            }
         }
         if (passThrough)
         {
             if (collision.gameObject.tag == "Enemy")
             {
                 collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            }
+            if (collision.gameObject.tag == "Planet")
+            {
+                collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
             }
         }
     }
