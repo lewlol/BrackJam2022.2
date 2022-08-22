@@ -62,11 +62,13 @@ public class Enemy : MonoBehaviour
         {
             if (foundLocation) //Find a New Location
             {
-                Vector2 planetPos = parentPlanet.transform.position;
-                float xOffset = Random.Range(-15, 15);
-                float yOffset = Random.Range(-15, 15);
-                movePos = new Vector2(planetPos.x + xOffset, planetPos.y + yOffset);
-                foundLocation = false;
+                    Vector2 planetPos = parentPlanet.transform.position;
+                    float xOffset = Random.Range(-15, 15);
+                    float yOffset = Random.Range(-15, 15);
+                    movePos = new Vector2(planetPos.x + xOffset, planetPos.y + yOffset);
+                    rb.constraints = RigidbodyConstraints2D.None;
+
+                    foundLocation = false;
             }
             if (!foundLocation) //Travel to New Location
             {          
@@ -77,6 +79,7 @@ public class Enemy : MonoBehaviour
                 }else
                 {
                     StartCoroutine(FindNewLocation());
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 }
             }
         }
