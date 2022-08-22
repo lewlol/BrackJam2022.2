@@ -58,16 +58,22 @@ public class Enemy : MonoBehaviour
             if (foundLocation) //Find a New Location
             {
                 Vector2 planetPos = parentPlanet.transform.position;
-                float xOffset = Random.Range(-25, 25);
-                float yOffset = Random.Range(-25, 25);
+                float xOffset = Random.Range(-15, 15);
+                float yOffset = Random.Range(-15, 15);
                 movePos = new Vector2(planetPos.x + xOffset, planetPos.y + yOffset);
                 foundLocation = false;
             }
             if (!foundLocation) //Travel to New Location
-            {
-                transform.position = Vector2.MoveTowards(transform.position, movePos, speed * Time.deltaTime);
+            {          
+                var distance = Vector3.Distance(transform.position, movePos);
+                if (distance > 3f)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, movePos, speed * Time.deltaTime);
+                }else
+                {
+                    StartCoroutine(FindNewLocation());
+                }
             }
-
         }
         else if (neutralState) //Neutral State - Docile Until the Player Attacks alien or Planet - Starting State
         {
@@ -103,5 +109,14 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    IEnumerator FindNewLocation()
+    {
+        int count = Random.Range(0, 11);
+        Debug.Log(count);
+        yield return new WaitForSeconds(count);
+        foundLocation = true;
     }
 }
