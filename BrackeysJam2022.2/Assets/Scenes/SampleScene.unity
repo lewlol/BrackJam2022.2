@@ -435,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 46
   maxHealth: 46
+  fuel: {fileID: 267636531003836247, guid: 445e6a8f66d693343a2f9adb38789533, type: 3}
 --- !u!1 &437923814
 GameObject:
   m_ObjectHideFlags: 0
