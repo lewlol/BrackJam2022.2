@@ -19,6 +19,8 @@ public class SpaceshipStats : MonoBehaviour
 
         fuel = 100;
         maxFuel = 100;
+
+        nuggets = 0;
     }
 
     public void TakeDamage(float damage)
