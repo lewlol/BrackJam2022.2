@@ -1,3 +1,4 @@
+using EZCameraShake;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,33 +8,20 @@ public class Planet : MonoBehaviour
     public float health;
     public float maxHealth;
 
-    float amount = 1.0f; //how much it shakes
-
     [SerializeField] private GameObject fuel;
-
-    [SerializeField]bool shaking;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
         health = maxHealth;
     }
-    private void FixedUpdate()
-    {
-        if (shaking)
-        {
-            Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * amount);
-
-            transform.position = newPos;
-        }
-    }
     public void TakeDamage(float damage)
     {
         health -= damage;
-        StartCoroutine(Shaking());
         if (health <= 0)
         {
-            SpawnFuelCan();
-            Destroy(gameObject);  
+            SpawnFuelCan();    
+            StartCoroutine(DestroyPlanet());
+            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
         }  
     }
     void SpawnFuelCan()
@@ -47,18 +35,15 @@ public class Planet : MonoBehaviour
         }
     }
 
-    IEnumerator Shaking()
+    IEnumerator DestroyPlanet()
     {
-        Vector3 ogPos = transform.position;
+        CircleCollider2D cc = GetComponent<CircleCollider2D>();
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
 
-        if(shaking == false)
-        {
-            shaking = true;
-        }
+        cc.enabled = false;
+        sr.enabled = false;
 
-        yield return new WaitForSeconds(0.25f);
-
-        shaking = false;
-        transform.position = ogPos;
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }

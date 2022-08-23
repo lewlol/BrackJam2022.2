@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RenderObjects : MonoBehaviour
 {
-    public GameObject[] objects;
+    public List <GameObject> objects;
     [SerializeField] private GameObject player;
     public Camera cam;
 
@@ -16,6 +16,10 @@ public class RenderObjects : MonoBehaviour
     {
         foreach(var obj in objects)
         {
+            if(obj == null)
+            {
+                objects.Remove(obj);
+            }
             float distance = Vector2.Distance(player.transform.position, obj.transform.position);
             if(distance <= cam.orthographicSize * 5)
             {

@@ -12,13 +12,13 @@ public class conspacemove : MonoBehaviour
     public float extraspeed = 15;
     float yAxis;
     float xAxis;
-  
-  
-        
+
+    private TrailRenderer tr;
 
     private SpaceshipStats stats;
     void Start()
     {
+        tr = GetComponent<TrailRenderer>();
         rb = GetComponent<Rigidbody2D>();  
         stats = GetComponent<SpaceshipStats>();
 
@@ -29,10 +29,18 @@ public class conspacemove : MonoBehaviour
     {
         yAxis = Input.GetAxis("Vertical");
         xAxis = Input.GetAxis("Horizontal");
-        
+        HidingBoost();
         if(Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f)
         {
             Boost();
+        }
+        //Slow Speed Backwards
+        if(yAxis < 0)
+        {
+            extraspeed = 10;
+        }else
+        {
+            extraspeed = 15;
         }
     }
 
@@ -68,16 +76,26 @@ public class conspacemove : MonoBehaviour
         extraspeed = 100;
         yield return new WaitForSeconds(0.2f);
         extraspeed = 15;
-        
-
     }
 
-
-  
-
-
-
-
-
-
+    void HidingBoost()
+    {
+        if (yAxis > 0 && tr.enabled == false)
+        {
+            tr.enabled = true;
+        }
+        if(yAxis == 0 && tr.enabled == true && Input.GetKeyDown(KeyCode.S))
+        {
+            tr.enabled = false;
+        }
+        if (yAxis < 0 && tr.enabled == true)
+        {
+            StartCoroutine(HideBoost());
+        }
+    }
+    IEnumerator HideBoost()
+    {
+        yield return new WaitForSeconds(0.4f);
+        tr.enabled = false;
+    }
 }

@@ -11,7 +11,7 @@ public class CamFollow : MonoBehaviour
 
     private void Start()
     {
-        cam = GetComponent<Camera>();
+        cam = GetComponentInChildren<Camera>();
     }
     private void LateUpdate()
     {
