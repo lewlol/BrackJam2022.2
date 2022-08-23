@@ -9,19 +9,24 @@ public class Planet : MonoBehaviour
     public float maxHealth;
 
     [SerializeField] private GameObject fuel;
+    [SerializeField] private GameObject cam;
+
+    private PlanetShake pShake;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
         health = maxHealth;
+        pShake = GetComponent<PlanetShake>();
     }
     public void TakeDamage(float damage)
     {
         health -= damage;
+        pShake.shakeDuration = 0.01f;
+        StartCoroutine(ShakePlanet());  
         if (health <= 0)
         {
             SpawnFuelCan();    
-            StartCoroutine(DestroyPlanet());
-            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+            StartCoroutine(DestroyPlanet());   
         }  
     }
     void SpawnFuelCan()
@@ -37,6 +42,8 @@ public class Planet : MonoBehaviour
 
     IEnumerator DestroyPlanet()
     {
+        cam.GetComponent<CamShakePog>().enabled = true;
+
         CircleCollider2D cc = GetComponent<CircleCollider2D>();
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
 
@@ -45,5 +52,11 @@ public class Planet : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+    }
+    IEnumerator ShakePlanet()
+    {
+        pShake.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        pShake.enabled = false;
     }
 }

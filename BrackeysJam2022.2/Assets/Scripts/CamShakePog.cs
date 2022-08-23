@@ -42,6 +42,7 @@ public class CamShakePog: MonoBehaviour
 		{
 			camTransform.localPosition = originalPos;
 			shakeDuration = 0f;
+			gameObject.GetComponent<CamShakePog>().enabled = false;
 		}
 	}
 }

@@ -30,15 +30,17 @@ public class conspacemove : MonoBehaviour
         yAxis = Input.GetAxis("Vertical");
         xAxis = Input.GetAxis("Horizontal");
         HidingBoost();
-        if(Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f)
+        if(Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f && yAxis > 0)
         {
             Boost();
         }
+
         //Slow Speed Backwards
         if(yAxis < 0)
         {
             extraspeed = 10;
-        }else
+        }
+        if(yAxis == 0)
         {
             extraspeed = 15;
         }
@@ -83,10 +85,6 @@ public class conspacemove : MonoBehaviour
         if (yAxis > 0 && tr.enabled == false)
         {
             tr.enabled = true;
-        }
-        if(yAxis == 0 && tr.enabled == true && Input.GetKeyDown(KeyCode.S))
-        {
-            tr.enabled = false;
         }
         if (yAxis < 0 && tr.enabled == true)
         {
