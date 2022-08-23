@@ -10,6 +10,7 @@ public class Planet : MonoBehaviour
 
     [SerializeField] private GameObject fuel;
     [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject particles;
 
     private PlanetShake pShake;
     private void Awake()
@@ -50,8 +51,11 @@ public class Planet : MonoBehaviour
         cc.enabled = false;
         sr.enabled = false;
 
+        var part = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
+
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+        Destroy(part);
     }
     IEnumerator ShakePlanet()
     {

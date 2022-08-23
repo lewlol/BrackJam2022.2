@@ -10,6 +10,8 @@ public class SpaceshipStats : MonoBehaviour
     public float fuel;
     [HideInInspector]public float maxFuel;
 
+    public float nuggets;
+
     private void Start()
     {
         health = 100;
@@ -22,5 +24,17 @@ public class SpaceshipStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+    }
+
+    private void FixedUpdate()
+    {
+        if(fuel > maxFuel)
+        {
+            fuel = maxFuel;
+        }
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 }
