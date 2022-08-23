@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39270660}
   - component: {fileID: 39270659}
+  - component: {fileID: 39270661}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -170,6 +171,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39270661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39270658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790eba2410b44ff4589372c41b4111a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 429753164}
+  shakeDuration: 0.1
+  shakeAmount: 0.7
+  decreaseFactor: 1
 --- !u!1 &429753161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,20 +1306,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da387a29e7d2f144bb61a5bccbe33f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eData: {fileID: 0}
   health: 3
   speed: 2
   extraspeed: 0
-  bulspeed: 3
-  bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}
-  parentPlanet: {fileID: 721405317}
-  target: {fileID: 578840161}
-  friendlyState: 0
-  neutralState: 0
-  agressiveState: 1
   neutralType: 0
   friendlyType: 0
   agressiveType: 0
   patrollingType: 0
+  kamikazeType: 0
+  bulspeed: 3
+  bulDelay: 0
+  friendlyState: 0
+  neutralState: 0
+  agressiveState: 1
+  bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}
+  parentPlanet: {fileID: 721405317}
+  target: {fileID: 578840161}
   countdown: 0
 --- !u!50 &1970684893
 Rigidbody2D:
