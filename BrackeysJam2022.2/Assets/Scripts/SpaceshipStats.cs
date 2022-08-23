@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceshipStats : MonoBehaviour
+public class SpaceshipStats : UnityEngine.MonoBehaviour
 {
     public float health;
     [HideInInspector]public float maxHealth;

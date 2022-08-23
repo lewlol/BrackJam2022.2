@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RenderObjects : MonoBehaviour
+public class RenderObjects : UnityEngine.MonoBehaviour
 {
     public List <GameObject> objects;
     [SerializeField] private GameObject player;

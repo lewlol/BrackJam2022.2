@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using EZCameraShake;
 
-public class ShakeOnKeyPress : MonoBehaviour
+public class ShakeOnKeyPress : UnityEngine.MonoBehaviour
 {
     public float Magnitude = 2f;
     public float Roughness = 10f;

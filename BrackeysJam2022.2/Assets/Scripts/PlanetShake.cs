@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetShake : MonoBehaviour
+public class PlanetShake : UnityEngine.MonoBehaviour
 {
 	// Transform of the camera to shake. Grabs the gameObject's transform
 	// if null.

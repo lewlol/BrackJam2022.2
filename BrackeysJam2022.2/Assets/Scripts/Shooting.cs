@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class Shooting : UnityEngine.MonoBehaviour
 {
     [SerializeField] private GameObject activeBullet;
     public float bSpeed = 5f;

@@ -4,7 +4,7 @@ using EZCameraShake;
 /*
  * This script begins shaking the camera when the player enters the trigger, and stops shaking when the player leaves.
  */
-public class ShakeOnTrigger : MonoBehaviour
+public class ShakeOnTrigger : UnityEngine.MonoBehaviour
 {
     //Our saved shake instance.
     private CameraShakeInstance _shakeInstance;

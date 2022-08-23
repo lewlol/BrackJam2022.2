@@ -16,6 +16,8 @@ public class conspacemove : MonoBehaviour
     private TrailRenderer tr;
 
     private SpaceshipStats stats;
+
+    bool hasFuel;
     void Start()
     {
         tr = GetComponent<TrailRenderer>();
@@ -27,22 +29,40 @@ public class conspacemove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        yAxis = Input.GetAxis("Vertical");
-        xAxis = Input.GetAxis("Horizontal");
-        HidingBoost();
-        if(Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f && yAxis > 0)
+        if(stats.fuel > 0)
         {
-            Boost();
+            hasFuel = true;
+
+        }else
+        {
+            hasFuel = false;
+            extraspeed = 3f;
         }
 
-        //Slow Speed Backwards
-        if(yAxis < 0)
+        if (hasFuel)
         {
-            extraspeed = 10;
-        }
-        if(yAxis == 0)
-        {
-            extraspeed = 15;
+            //Detect Movement
+            yAxis = Input.GetAxis("Vertical");
+            xAxis = Input.GetAxis("Horizontal");
+
+            //Trail Hiding Fixes
+            HidingBoost();
+
+            //Boost Detection
+            if (Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f && yAxis > 0)
+            {
+                Boost();
+            }
+
+            //Slow Speed Backwards
+            if (yAxis < 0)
+            {
+                extraspeed = 10;
+            }
+            if (yAxis == 0)
+            {
+                extraspeed = 15;
+            }
         }
     }
 

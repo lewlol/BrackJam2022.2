@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapCompletionProgress : MonoBehaviour
+public class MapCompletionProgress : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private Transform earth;
@@ -15,6 +15,6 @@ public class MapCompletionProgress : MonoBehaviour
     void DistanceToEarth()
     {
         distance = Vector3.Distance(player.position, earth.position);
-        EarthDistance.text ="Home: " + distance.ToString("F1") + "KM";
+        EarthDistance.text = "         " + distance.ToString("F1") + "KM";
     }
 }

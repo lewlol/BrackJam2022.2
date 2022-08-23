@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EZCameraShake
 {
     [AddComponentMenu("EZ Camera Shake/Camera Shaker")]
-    public class CameraShaker : MonoBehaviour
+    public class CameraShaker : UnityEngine.MonoBehaviour
     {
         /// <summary>
         /// The single instance of the CameraShaker in the current scene. Do not use if you have multiple instances.

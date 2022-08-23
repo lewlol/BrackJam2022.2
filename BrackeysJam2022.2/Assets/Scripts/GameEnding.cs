@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameEnding : MonoBehaviour
+public class GameEnding : UnityEngine.MonoBehaviour
 {
     public GameObject Player;
     public Rigidbody2D prigidbody;

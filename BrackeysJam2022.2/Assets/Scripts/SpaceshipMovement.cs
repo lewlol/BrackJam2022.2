@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceshipMovement : MonoBehaviour
+public class SpaceshipMovement : UnityEngine.MonoBehaviour
 {
     Rigidbody2D body;
 

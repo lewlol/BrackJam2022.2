@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceshipRotate : MonoBehaviour
+public class SpaceshipRotate : UnityEngine.MonoBehaviour
 {
     [SerializeField] Camera cam;
     private void FixedUpdate()

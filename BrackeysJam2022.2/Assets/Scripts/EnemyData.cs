@@ -6,19 +6,25 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     [Header("Enemy Stats")]
-    public float health;
-    public float speed;
-    public float eSpeed;
-    public Sprite sprite;
+    public float health; //Enemy Health
+    public float speed; //Enemy Speed
+    public float eSpeed; //Enemy eSpeed
+    public Sprite sprite; //Enemy Sprite
+
+    [Header("Team")]
+    public bool redTeam; //Red Team
+    public bool greenTeam; //Green Team
+    public bool blueTeam; //Blue Team
 
     [Header("Enemy Type")]
-    public bool friendly;
-    public bool agressive;
-    public bool neutral;
-    public bool patrolling;
-    public bool kamikaze;
+    public bool shooterType; //Shoots Player
+    public bool kamikazeType; //Flys into Player (Cant Shoot)
+
+    [Header("Default State")]
+    public bool neutralState; //Wont Hurt Player Immediately
+    public bool agressiveState; //Will Hurt Player Immediately
 
     [Header("Weapon Stats")]
-    public float bulletSpeed;
-    public float bulletDelay;
+    public float bulletSpeed; //Bullet Speed
+    public float bulletDelay; //Bullet Delay
 }

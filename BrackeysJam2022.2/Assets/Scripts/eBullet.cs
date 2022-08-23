@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class eBullet : MonoBehaviour
+public class eBullet : UnityEngine.MonoBehaviour
 {
     [Header("Variables")]
     public float lifetime;

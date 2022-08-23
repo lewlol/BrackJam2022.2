@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using EZCameraShake;
 
-public class ShakeDemo : MonoBehaviour 
+public class ShakeDemo : UnityEngine.MonoBehaviour 
 {
     Vector3 posInf = new Vector3(0.25f, 0.25f, 0.25f);
     Vector3 rotInf = new Vector3(1, 1, 1);

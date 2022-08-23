@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpaceshipSliders : MonoBehaviour
+public class SpaceshipSliders : UnityEngine.MonoBehaviour
 {
     public Slider health;
     public Slider fuel;
+    public Text nugget;
 
     [SerializeField] private SpaceshipStats stats;
 
@@ -17,6 +18,8 @@ public class SpaceshipSliders : MonoBehaviour
 
         fuel.maxValue = stats.maxFuel;
         fuel.value = stats.fuel;
+
+        nugget.text = "         " + stats.nuggets.ToString();
     }
 
     private void Update()
@@ -27,5 +30,7 @@ public class SpaceshipSliders : MonoBehaviour
 
         health.value = stats.health;
         fuel.value = stats.fuel;
+
+        nugget.text = "         " + stats.nuggets.ToString();
     }
 }

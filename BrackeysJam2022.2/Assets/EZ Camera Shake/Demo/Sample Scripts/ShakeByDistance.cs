@@ -4,7 +4,7 @@ using EZCameraShake;
 /*
  * This script shakes the camera based on the player object's distance to the object this script is attached to.
  */
-public class ShakeByDistance : MonoBehaviour
+public class ShakeByDistance : UnityEngine.MonoBehaviour
 {
     //Our player object.
     public GameObject Player;

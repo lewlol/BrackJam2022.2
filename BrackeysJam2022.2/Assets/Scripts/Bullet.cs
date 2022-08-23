@@ -20,9 +20,9 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                if(collision.gameObject.GetComponent<Enemy>() != null)
+                if(collision.gameObject.GetComponent<EnemyAI>() != null)
                 {
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                    collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
                 }
                 Destroy(gameObject);
                 return;
@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
             }
             if (collision.gameObject.tag == "Planet")
             {

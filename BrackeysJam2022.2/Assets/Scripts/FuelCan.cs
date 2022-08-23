@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FuelCan : MonoBehaviour
+public class FuelCan : UnityEngine.MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
