@@ -10,7 +10,9 @@ public class EnemyAI : MonoBehaviour
     //Stats - The Enemies Stats
     float health;
     float speed;
-    float eSpeed;
+    float chaseRadius;
+    float attackRadius;
+    float damage;
 
     //Sprite Renderer and Sprite
     Sprite sprite;
@@ -38,6 +40,12 @@ public class EnemyAI : MonoBehaviour
     float bulletSpeed;
     //Bullet Delay
     float bulletDelay;
+    //Bullet Lifetime
+    float bulletLifetime;
+    //Bullet Pass Through
+    bool bulletPassThrough;
+    //Bullet Prefab
+    GameObject bullet;
 
     //Player/Enemy Reference - To Track and Kill Player/Enemy
     public GameObject player;
@@ -55,6 +63,12 @@ public class EnemyAI : MonoBehaviour
     float yOffset;
     Vector3 location;
     float distance;
+
+    //Chasing Bool
+    bool exitChase;
+
+    //Shooting Vars
+    float delay;
 
     private void Awake()
     {
@@ -76,7 +90,9 @@ public class EnemyAI : MonoBehaviour
     {
         health = eData.health;
         speed = eData.speed;
-        eSpeed = eData.eSpeed;
+        chaseRadius = eData.chaseRadius;
+        attackRadius = eData.attackRadius;
+        damage = eData.damage;
 
         sprite = eData.sprite;
         sr.sprite = sprite;
@@ -93,6 +109,10 @@ public class EnemyAI : MonoBehaviour
 
         bulletSpeed = eData.bulletSpeed;
         bulletDelay = eData.bulletDelay;
+        bulletLifetime = eData.bulletLifetime;
+        bullet = eData.bullet;
+
+        delay = eData.bulletDelay;
     }
 
     void Movement() //Enemy Movement
@@ -130,9 +150,9 @@ public class EnemyAI : MonoBehaviour
             if (wandering)
             {
                 //Wander to Location
-                Vector3 diff = (location - transform.position); //This Aquires Rotation
-                float angle = Mathf.Atan2(diff.x, diff.y);
-                transform.rotation = Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg);
+                Vector3 dir = location - transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
                 float finalspeed = speed * Time.deltaTime; //This Moves to Position
                 Vector2 position = Vector2.MoveTowards(gameObject.transform.position, location, finalspeed);
@@ -148,15 +168,56 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
             }
+        }
 
-            //Check for Player Damaging Planet or Enemy
-            //Switch to Agressive State
+        if (agressiveState)
+        {
+            //Distance Between Enemy and Player
+            float playerDistance = Vector2.Distance(transform.position, player.transform.position);
+
+            //If Within Chase Radius
+            if (playerDistance <= chaseRadius && !exitChase)
+            {
+                float finalspeed = speed * Time.deltaTime; //This Moves to Position
+                Vector2 position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, finalspeed);
+                rb.MovePosition(position);
+            }
+
+            //If Withing Shooting Distance
+            if (playerDistance < attackRadius)
+            {
+                Shooting();
+            }
         }
     }
-
     void Shooting()
     {
+        float countdown = delay -= Time.deltaTime;
+        if (countdown <= 0)
+        {
+            //Instantiate Bullet
+            var bul = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
+            //Assign Stats to Bullet
+            bul.GetComponent<eBullet>().lifetime = bulletLifetime;
+            bul.GetComponent<eBullet>().damage = damage;
+            bul.GetComponent<eBullet>().passThrough = bulletPassThrough;
+
+            //Bullet Momentum
+            Rigidbody2D rb = bul.GetComponent<Rigidbody2D>();
+            rb.AddForce(bul.transform.up * bulletSpeed, ForceMode2D.Impulse);
+
+            //Reset Timer
+            delay = bulletDelay;
+        }
+    }
+    public void PlanetAttacked()
+    {
+        neutralState = false;
+        agressiveState = true;
+
+        wandering = false;
+        findingLocation = false;
     }
     public void TakeDamage(float damage)
     {
@@ -164,8 +225,10 @@ public class EnemyAI : MonoBehaviour
 
         neutralState = false;
         agressiveState = true;
-    }
 
+        wandering = false;
+        findingLocation = false;
+    }
     IEnumerator WaitToMove()
     {
         wandering = false;

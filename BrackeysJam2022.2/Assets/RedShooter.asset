@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   speed: 3
-  eSpeed: 12
+  chaseRadius: 15
+  attackRadius: 5
+  damage: 3
   sprite: {fileID: 21300000, guid: 4ff26969faa7cfb4289c7df2f8ca4751, type: 3}
   redTeam: 1
   greenTeam: 0
@@ -25,3 +27,5 @@ MonoBehaviour:
   agressiveState: 0
   bulletSpeed: 3
   bulletDelay: 3
+  bulletLifetime: 2
+  bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}

@@ -8,7 +8,9 @@ public class EnemyData : ScriptableObject
     [Header("Enemy Stats")]
     public float health; //Enemy Health
     public float speed; //Enemy Speed
-    public float eSpeed; //Enemy eSpeed
+    public float chaseRadius; //Enemy Player Detection Radius
+    public float attackRadius; //Enemy Attack Radius
+    public float damage; //Enemy Damage
     public Sprite sprite; //Enemy Sprite
 
     [Header("Team")]
@@ -27,4 +29,7 @@ public class EnemyData : ScriptableObject
     [Header("Weapon Stats")]
     public float bulletSpeed; //Bullet Speed
     public float bulletDelay; //Bullet Delay
+    public float bulletLifetime; //Bullets lifetime
+    public GameObject bullet; //Bullet Prefab
+    bool passthrough; //Bullet Pass Through Objects
 }
