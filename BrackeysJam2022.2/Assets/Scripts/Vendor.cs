@@ -5,6 +5,7 @@ using UnityEngine;
 public class Vendor : MonoBehaviour
 {
     public Rigidbody2D player;
+    public Canvas stats;
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -12,13 +13,7 @@ public class Vendor : MonoBehaviour
         {
             player.constraints = RigidbodyConstraints2D.FreezeAll;
             Debug.Log("clicked");
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-
+            stats.enabled = false;
         }
     }
 
