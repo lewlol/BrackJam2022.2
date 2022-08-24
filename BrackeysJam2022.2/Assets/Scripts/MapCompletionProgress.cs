@@ -8,9 +8,15 @@ public class MapCompletionProgress : UnityEngine.MonoBehaviour
     public Text EarthDistance; 
 
     public float distance;
+
+    Vector3 targetPos;
+    RectTransform pointer;
     private void Update()
     {
         DistanceToEarth();
+
+
+
     }
     void DistanceToEarth()
     {

@@ -150,9 +150,10 @@ public class EnemyAI : MonoBehaviour
             if (wandering)
             {
                 //Wander to Location
-                Vector3 dir = location - transform.position;
+                Vector3 targetPosition = location; //Rotation
+                Vector3 dir = targetPosition - this.transform.position;
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                this.transform.rotation = Quaternion.AngleAxis(angle + 270, Vector3.forward);
 
                 float finalspeed = speed * Time.deltaTime; //This Moves to Position
                 Vector2 position = Vector2.MoveTowards(gameObject.transform.position, location, finalspeed);
@@ -172,6 +173,12 @@ public class EnemyAI : MonoBehaviour
 
         if (agressiveState)
         {
+            //Rotate to Player
+            Vector3 targetPosition = player.transform.position; //Rotation
+            Vector3 dir = targetPosition - this.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            this.transform.rotation = Quaternion.AngleAxis(angle + 270, Vector3.forward);
+
             //Distance Between Enemy and Player
             float playerDistance = Vector2.Distance(transform.position, player.transform.position);
 
@@ -205,7 +212,7 @@ public class EnemyAI : MonoBehaviour
 
             //Bullet Momentum
             Rigidbody2D rb = bul.GetComponent<Rigidbody2D>();
-            rb.AddForce(bul.transform.up * bulletSpeed, ForceMode2D.Impulse);
+            rb.AddForce(bul.transform.forward * bulletSpeed, ForceMode2D.Impulse);
 
             //Reset Timer
             delay = bulletDelay;
@@ -231,6 +238,7 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator WaitToMove()
     {
+        rb.freezeRotation = true;
         wandering = false;
         waitingToMove = true;
 
@@ -243,5 +251,6 @@ public class EnemyAI : MonoBehaviour
         location = Vector2.zero;
         
         findingLocation = true;
+        rb.freezeRotation = false;
     }
 }
