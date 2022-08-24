@@ -62166,7 +62166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbc9a0b49687354b983113e8f538725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextPrompt: {fileID: 0}
+  TextPrompt: {fileID: 1845535637}
 --- !u!114 &1186344499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62181,6 +62181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1534855281}
   stats: {fileID: 584429237}
+  vendorui: {fileID: 2005430113}
 --- !u!58 &1186344500
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -76004,6 +76005,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3d05da11bfda89489fe60627b8cd0d6, type: 3}
+--- !u!1 &1448064846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448064847}
+  - component: {fileID: 1448064849}
+  - component: {fileID: 1448064848}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1448064847
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448064846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6254, y: 1.6254, z: 1.6254}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2005430114}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -103, y: -295}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1448064848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448064846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f3d4b23005e544b4396a0f3b8b5444a2, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "Welcome to our planet \"Random planet name\"\nwe are happy u have came
+    to visit it has\nbeen a long time coming. we see u have \nthos gold nuggets would
+    u like to trade \nthem for our wares???\n\nDO u want to trade 5x gold nuggets
+    for                                    Y to trade\n\"Random upgrade \"                                                                  
+    ESC to exit planet                                "
+--- !u!222 &1448064849
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448064846}
+  m_CullTransparentMesh: 1
 --- !u!1 &1448631253
 GameObject:
   m_ObjectHideFlags: 0
@@ -106576,7 +106661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2005430111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106653,6 +106738,7 @@ RectTransform:
   - {fileID: 272908934}
   - {fileID: 1769059200}
   - {fileID: 1037637485}
+  - {fileID: 1448064847}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
