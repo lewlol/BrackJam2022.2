@@ -62203,6 +62203,7 @@ MonoBehaviour:
   - Gloria
   - Sleeze
   - Pikyra
+  - Reshala
   lastname:
   - Blerg
   - Humpleback
@@ -62210,7 +62211,12 @@ MonoBehaviour:
   - Shrakh
   - Pythor
   - Slingking
-  - 
+  - Hython
+  - Glukhar
+  - Todd
+  - Vixen
+  - Ozone
+  - Tritar
   planetname:
   - Yondoo
   - Isopodien
@@ -62222,6 +62228,31 @@ MonoBehaviour:
   - Corso
   - Pantone
   - Pantone
+  - Mars
+  - Umosie
+  - Sirivious
+  - Xouhines
+  - Meostea
+  - Culvilles
+  - Gamia
+  - Rivoaclite
+  - Obos
+  - Moetov
+  - Huiwei
+  - Druaphus
+  - Tremunus
+  - Itrinda
+  - Enruvis
+  - Thenzarth
+  - Volloavis
+  - Gibos
+  - Strokuthea
+  - Duvainov
+  - Bellapus
+  - Chueruta
+  - Eccebos
+  - Pubos
+  - Mustrorix
   alienname: {fileID: 1037637486}
   planetdescription: {fileID: 1448064848}
 --- !u!58 &1186344500
