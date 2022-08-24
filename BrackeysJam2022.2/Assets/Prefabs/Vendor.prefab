@@ -67,11 +67,59 @@ MonoBehaviour:
   nuggets: {fileID: 0}
   vendorUI: {fileID: 0}
   firstname:
-  - man
-  - women
+  - Arg
+  - Aboof
+  - Arang
+  - Ardoo
+  - Ankhaa
+  - Brack
+  - Bruus
+  - Broth
+  - Boncha
+  - Borg
+  - Bart
+  - Brute
+  - Bringanada
+  - Connor
+  - Crang
+  - Crokh
+  - Darg
+  - Drijkal
+  - Drooug
+  - Elanta
+  - Fahhrt
+  - Zooga
+  - Stragha
+  - Hawthrak
+  - Vxie
+  - Yostea
+  - Igrion
+  - Grandrat
+  - Phagua
+  - Theutas
+  - Hillastra
+  - Poibrang
+  - Zoocringlat
+  - Pog
+  - Brodantis
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
+  - Brof
   lastname:
-  - hello
-  - balls
+  - 
+  - 
   planetname:
   - Yondoo
   - Nebula
