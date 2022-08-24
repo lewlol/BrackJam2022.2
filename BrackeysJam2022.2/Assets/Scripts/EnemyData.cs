@@ -15,15 +15,17 @@ public class EnemyData : ScriptableObject
     public GameObject dParticles; //Enemy Death Particles
 
     [Header("Team")]
-    public bool redTeam; //Red Team
+    public bool redTeam; //Agressive Red Team
     public bool greenTeam; //Green Team
     public bool blueTeam; //Blue Team
+    public bool yellowTeam; //Friendly Yellow Team
 
     [Header("Enemy Type")]
     public bool shooterType; //Shoots Player
     public bool kamikazeType; //Flys into Player (Cant Shoot)
 
     [Header("Default State")]
+    public bool friendlyState; //Never Hurts Player (Friendly and Vendor)
     public bool neutralState; //Wont Hurt Player Immediately
     public bool agressiveState; //Will Hurt Player Immediately
 

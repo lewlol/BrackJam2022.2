@@ -26,7 +26,10 @@ public class EnemyAI : MonoBehaviour
     bool redTeam;
     bool greenTeam;
     bool blueTeam;
+    bool yellowTeam;
 
+    //Friendly State - Never Attacks Player 
+    bool friendlyState;
     //Neutral State - Doesn't Attack until the Player Attacks them or Their Planet
     bool neutralState;
     //Aggressive State - Tracks the Player in a Certain Radius and Attacks
@@ -53,6 +56,7 @@ public class EnemyAI : MonoBehaviour
 
     //Player/Enemy Reference - To Track and Kill Player/Enemy
     public GameObject player;
+    float playerDistance;
 
     //Rigidbody
     Rigidbody2D rb;
@@ -94,9 +98,6 @@ public class EnemyAI : MonoBehaviour
 
         //Dead Check
         dead = false;
-
-        //FindPlayer
-        player = GameObject.FindGameObjectWithTag("Player");
     }
     private void FixedUpdate()
     {
@@ -120,7 +121,9 @@ public class EnemyAI : MonoBehaviour
         redTeam = eData.redTeam;
         greenTeam = eData.greenTeam;
         blueTeam = eData.blueTeam;
+        yellowTeam = eData.yellowTeam;
 
+        friendlyState = eData.friendlyState;
         neutralState = eData.neutralState;
         agressiveState = eData.agressiveState;
 
@@ -133,78 +136,57 @@ public class EnemyAI : MonoBehaviour
         bullet = eData.bullet;
 
         delay = eData.bulletDelay;
+
+        //FindPlayer
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Movement() //Enemy Movement
     {
-        if (neutralState) //Neutral State - Wander Around Home Planet
-        {       
-            if (findingLocation)
-            {
-                //Find a New Location to Wander to
-                float xposNeg = Random.Range(0, 2);
-                if (xposNeg == 0)
-                {
-                    xOffset = Random.Range(7, 12);
-                }
-                else
-                {
-                    xOffset = Random.Range(-7, -12);
-                }
-                float yposNeg = Random.Range(0, 2);
-                if (yposNeg == 0)
-                {
-                    yOffset = Random.Range(7, 12);
-                }
-                else
-                {
-                    yOffset = Random.Range(-7, -12);
-                }
+        //Distance Between Enemy and Player
+        playerDistance = Vector2.Distance(transform.position, player.transform.position);
 
-                location = new Vector3(hPlanet.x + xOffset, hPlanet.y + yOffset, 0);
-
-                wandering = true;
-                findingLocation = false;           
-            }
-
-            if (wandering)
-            {
-                //Wander to Location
-                Vector3 targetPosition = location; //Rotation
-                Vector3 dir = targetPosition - this.transform.position;
-                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                this.transform.rotation = Quaternion.AngleAxis(angle + 270, Vector3.forward);
-
-                float finalspeed = speed * Time.deltaTime; //This Moves to Position
-                Vector2 position = Vector2.MoveTowards(gameObject.transform.position, location, finalspeed);
-                rb.MovePosition(position);
-
-                //Once in Location Wait a Random amount of Time
-                distance = Vector2.Distance(gameObject.transform.position, position);
-                if (distance == 0)//Arrived at Location
-                {
-                    if (!waitingToMove)
-                    {
-                        StartCoroutine(WaitToMove());
-                    }
-                }
-            }
+        //Despawn
+        if(playerDistance >= 100)
+        {
+            Destroy(gameObject);
+        }
+        //Friendly State
+        if (friendlyState)
+        {
+            Wandering();
         }
 
+        //Neutral State
+        if (neutralState)
+        {
+            Wandering();
+        }
+
+        //Agressive State
         if (agressiveState)
         {
-            //Rotate to Player
-            Vector3 targetPosition = player.transform.position; //Rotation
-            Vector3 dir = targetPosition - this.transform.position;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            this.transform.rotation = Quaternion.AngleAxis(angle + 270, Vector3.forward);
 
-            //Distance Between Enemy and Player
-            float playerDistance = Vector2.Distance(transform.position, player.transform.position);
+            //Cant Track Player
+            if (playerDistance > chaseRadius)
+            {
+                if (!findingLocation)
+                {
+                    findingLocation = true;
+                }
+
+                Wandering();
+            }
 
             //If Within Chase Radius
             if (playerDistance <= chaseRadius && !exitChase)
             {
+                //Rotate to Player
+                Vector3 targetPosition = player.transform.position;
+                Vector3 dir = targetPosition - this.transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                this.transform.rotation = Quaternion.AngleAxis(angle + 270, Vector3.forward);
+
                 float finalspeed = speed * Time.deltaTime; //This Moves to Position
                 Vector2 position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, finalspeed);
                 rb.MovePosition(position);
@@ -241,6 +223,60 @@ public class EnemyAI : MonoBehaviour
             delay = bulletDelay;
         }
     }
+
+    void Wandering()
+    {
+        if (findingLocation)
+        {
+            //Find a New Location to Wander to
+            float xposNeg = Random.Range(0, 2);
+            if (xposNeg == 0)
+            {
+                xOffset = Random.Range(7, 12);
+            }
+            else
+            {
+                xOffset = Random.Range(-7, -12);
+            }
+            float yposNeg = Random.Range(0, 2);
+            if (yposNeg == 0)
+            {
+                yOffset = Random.Range(7, 12);
+            }
+            else
+            {
+                yOffset = Random.Range(-7, -12);
+            }
+
+            location = new Vector3(hPlanet.x + xOffset, hPlanet.y + yOffset, 0);
+
+            wandering = true;
+            findingLocation = false;
+        }
+
+        if (wandering)
+        {
+            //Wander to Location
+            Vector3 targetPosition = location; //Rotation
+            Vector3 dir = targetPosition - this.transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            this.transform.rotation = Quaternion.AngleAxis(angle + 270, Vector3.forward);
+
+            float finalspeed = speed * Time.deltaTime; //This Moves to Position
+            Vector2 position = Vector2.MoveTowards(gameObject.transform.position, location, finalspeed);
+            rb.MovePosition(position);
+
+            //Once in Location Wait a Random amount of Time
+            distance = Vector2.Distance(gameObject.transform.position, position);
+            if (distance == 0)//Arrived at Location
+            {
+                if (!waitingToMove)
+                {
+                    StartCoroutine(WaitToMove());
+                }
+            }
+        }
+    }
     public void PlanetAttacked()
     {
         neutralState = false;
@@ -258,6 +294,7 @@ public class EnemyAI : MonoBehaviour
             dead = true;
             StartCoroutine(Death());
         }
+
         if (neutralState)
         {
             neutralState = false;

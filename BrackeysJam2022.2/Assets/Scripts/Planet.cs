@@ -22,6 +22,8 @@ public class Planet : UnityEngine.MonoBehaviour
 
     public GameObject enemy;
     private Vector3 location;
+
+    public GameObject vendor;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
@@ -74,7 +76,7 @@ public class Planet : UnityEngine.MonoBehaviour
         if(spawnEnemy > 3)
         {
             //Team?
-            int team = 0; //Random.Range(0, 4);
+            int team = Random.Range(0, 4);
             if(team == 0) //Red Team
             {
                 int enemyCount = Random.Range(1, 7);
@@ -90,6 +92,7 @@ public class Planet : UnityEngine.MonoBehaviour
                     int RandomEnemy = Random.Range(0, redEnemies.Length);
                     en.GetComponent<EnemyAI>().eData = redEnemies[RandomEnemy];
                     en.SetActive(true);
+                    en.GetComponent<EnemyAI>().enabled = true;
                 }
             }
             else if(team == 1) //Blue Team
@@ -107,6 +110,7 @@ public class Planet : UnityEngine.MonoBehaviour
                     int RandomEnemy = Random.Range(0, blueEnemies.Length);
                     en.GetComponent<EnemyAI>().eData = blueEnemies[RandomEnemy];
                     en.SetActive(true);
+                    en.GetComponent<EnemyAI>().enabled = true;
                 }
             }
             else if(team == 2) //Green Team
@@ -124,6 +128,7 @@ public class Planet : UnityEngine.MonoBehaviour
                     int RandomEnemy = Random.Range(0, greenEnemies.Length);
                     en.GetComponent<EnemyAI>().eData = greenEnemies[RandomEnemy];
                     en.SetActive(true);
+                    en.GetComponent<EnemyAI>().enabled = true;
                 }
             }
             else if(team == 3) //Friendly Yellow Team with Vendor
@@ -141,7 +146,11 @@ public class Planet : UnityEngine.MonoBehaviour
                     int RandomEnemy = Random.Range(0, yellowEnemies.Length);
                     en.GetComponent<EnemyAI>().eData = yellowEnemies[RandomEnemy];
                     en.SetActive(true);
+                    en.GetComponent<EnemyAI>().enabled = true;
                 }
+
+                //VendorSpawn
+                Instantiate(vendor, gameObject.transform.position, Quaternion.identity);
             } 
         }
     }
@@ -170,7 +179,7 @@ public class Planet : UnityEngine.MonoBehaviour
             yOffset = Random.Range(-7, -12);
         }
 
-        Vector3 location = new Vector3(gameObject.transform.position.x + xOffset, gameObject.transform.position.y + yOffset, 0);
+        location = new Vector3(gameObject.transform.position.x + xOffset, gameObject.transform.position.y + yOffset, 0);
     }
 
     IEnumerator DestroyPlanet()
