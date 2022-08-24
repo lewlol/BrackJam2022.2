@@ -62284,6 +62284,7 @@ MonoBehaviour:
   - Sleeze
   - Pikyra
   - Reshala
+  - Ronald
   lastname:
   - Blerg
   - Humpleback
@@ -62343,7 +62344,13 @@ MonoBehaviour:
   - Bobborth
   - Dinus
   - Aclite
-  dialogue: []
+  dialogue:
+  - Welcome to our planet. We have fallen on harsh times recently and without power
+    we have no idea what to do . We see those gold nuggets u have, we use them for
+    power. Would u wanna trade them for our wares?
+  - Oh hello traveler, it has been a long time since we have seen someone of your
+    kind, Feel free to stay at our planet a slong as u like. Also we have technology
+    which may help you on your journey. We can install them at the right price
   alienname: {fileID: 1037637486}
   planetdescription: {fileID: 378223090}
   dialoguetxt: {fileID: 1348721327}
@@ -71758,7 +71765,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f3d4b23005e544b4396a0f3b8b5444a2, type: 3}
-    m_FontSize: 35
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
