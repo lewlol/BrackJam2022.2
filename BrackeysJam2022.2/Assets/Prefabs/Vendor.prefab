@@ -254,8 +254,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4748be127e5444347bc349e375ec2bab, type: 3}
   - {fileID: 21300000, guid: b34abca115642ab4cb04e5bb9289f47c, type: 3}
   dialogue:
-  - 
-  - 
+  - Oh hello traveler welcome to our humble planet. You look a little worse for wear
+    and well smell quite revolting so if u could maybe do business and leave thankyou.
+  - Hmm hello traveler we havent seen your kind around here in a long time what are
+    u doing all the way out here . Well nonethless we hope u enjoy our hospitality
+    and if u want to trade feel free we see those nuggest and our wares could help
+    on the journey home.
+  - 'Hello please could you help we have ran out of power and our planet will fall
+    into ruin. Our atmosphere will collapse in on itself if we dont get fuel and
+    we see you have those gold nuggets which is our power source. Im sure we cna
+    help u out in return. '
+  - Hmm a human. We havent seen your kind around here in a long time well since u
+    tried to take our resources. But hey the others dont need to know u are here
+    if u pay me those gold nuggets i could give u my wares then u can go back to
+    where u came from.
+  - Oh hello, what a fascinating creature, what are you. And ooh so shiny those shiny
+    things in your pockets . Hey pay me those and i will help make u better yes yes
+    trade with me.
+  - Traveler hello welcome to our planet . Feel free to enjoy our facilities and
+    hey if u want to let go of some of that gold im sure we could give something
+    that would help on your journey home.
   alienname: {fileID: 0}
   planetdescription: {fileID: 0}
   dialoguetxt: {fileID: 0}
