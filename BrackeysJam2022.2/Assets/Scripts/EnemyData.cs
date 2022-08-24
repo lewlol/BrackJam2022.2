@@ -12,6 +12,7 @@ public class EnemyData : ScriptableObject
     public float attackRadius; //Enemy Attack Radius
     public float damage; //Enemy Damage
     public Sprite sprite; //Enemy Sprite
+    public GameObject dParticles; //Enemy Death Particles
 
     [Header("Team")]
     public bool redTeam; //Red Team

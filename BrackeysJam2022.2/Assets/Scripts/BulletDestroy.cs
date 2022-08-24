@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletDestroy : MonoBehaviour
 {
+    public float destroyTime;
     private void Awake()
     {
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, destroyTime);
     }
 }

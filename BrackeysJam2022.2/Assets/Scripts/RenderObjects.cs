@@ -19,6 +19,7 @@ public class RenderObjects : UnityEngine.MonoBehaviour
             if(obj == null)
             {
                 objects.Remove(obj);
+                return;
             }
             float distance = Vector2.Distance(player.transform.position, obj.transform.position);
             if(distance <= cam.orthographicSize * 5)
