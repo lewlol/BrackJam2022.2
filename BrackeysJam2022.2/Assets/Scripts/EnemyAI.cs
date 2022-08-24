@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     //eData Reference - Where the Stats will be Assigned For
-    [SerializeField] private EnemyData eData;
+    public EnemyData eData;
 
     //Stats - The Enemies Stats
     float health;
@@ -94,6 +94,9 @@ public class EnemyAI : MonoBehaviour
 
         //Dead Check
         dead = false;
+
+        //FindPlayer
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     private void FixedUpdate()
     {

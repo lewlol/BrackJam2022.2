@@ -14,11 +14,21 @@ public class Planet : UnityEngine.MonoBehaviour
     [SerializeField] private GameObject nuggets;
 
     private PlanetShake pShake;
+
+    public EnemyData[] redEnemies;
+    public EnemyData[] greenEnemies;
+    public EnemyData[] blueEnemies;
+    public EnemyData[] yellowEnemies;
+
+    public GameObject enemy;
+    private Vector3 location;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
         health = maxHealth;
         pShake = GetComponent<PlanetShake>();
+
+        SpawnEnemies();
     }
     public void TakeDamage(float damage)
     {
@@ -55,6 +65,112 @@ public class Planet : UnityEngine.MonoBehaviour
                 Instantiate(nuggets, spawnPos, Quaternion.identity);
             }
         }
+    }
+
+    void SpawnEnemies()
+    {
+        //Can Spawn Enemies?
+        int spawnEnemy = Random.Range(0, 11);
+        if(spawnEnemy > 3)
+        {
+            //Team?
+            int team = 0; //Random.Range(0, 4);
+            if(team == 0) //Red Team
+            {
+                int enemyCount = Random.Range(1, 7);
+                for (int x = 0;x < enemyCount; x++)
+                {
+                    EnemyLocation();
+                    var en = Instantiate(enemy, location, Quaternion.identity);
+                    en.SetActive(false);
+
+                    //Home Planet Assigning
+                    en.GetComponent<EnemyAI>().homePlanet = gameObject;
+
+                    int RandomEnemy = Random.Range(0, redEnemies.Length);
+                    en.GetComponent<EnemyAI>().eData = redEnemies[RandomEnemy];
+                    en.SetActive(true);
+                }
+            }
+            else if(team == 1) //Blue Team
+            {
+                int enemyCount = Random.Range(1, 7);
+                for (int x = 0; x < enemyCount; x++)
+                {
+                    EnemyLocation();
+                    var en = Instantiate(enemy, location, Quaternion.identity);
+                    en.SetActive(false);
+
+                    //Home Planet Assigning
+                    en.GetComponent<EnemyAI>().homePlanet = gameObject;
+
+                    int RandomEnemy = Random.Range(0, blueEnemies.Length);
+                    en.GetComponent<EnemyAI>().eData = blueEnemies[RandomEnemy];
+                    en.SetActive(true);
+                }
+            }
+            else if(team == 2) //Green Team
+            {
+                int enemyCount = Random.Range(1, 7);
+                for (int x = 0; x < enemyCount; x++)
+                {
+                    EnemyLocation();
+                    var en = Instantiate(enemy, location, Quaternion.identity);
+                    en.SetActive(false);
+
+                    //Home Planet Assigning
+                    en.GetComponent<EnemyAI>().homePlanet = gameObject;
+
+                    int RandomEnemy = Random.Range(0, greenEnemies.Length);
+                    en.GetComponent<EnemyAI>().eData = greenEnemies[RandomEnemy];
+                    en.SetActive(true);
+                }
+            }
+            else if(team == 3) //Friendly Yellow Team with Vendor
+            {
+                int enemyCount = Random.Range(1, 7);
+                for (int x = 0; x < enemyCount; x++)
+                {
+                    EnemyLocation();
+                    var en = Instantiate(enemy, location, Quaternion.identity);
+                    en.SetActive(false);
+
+                    //Home Planet Assigning
+                    en.GetComponent<EnemyAI>().homePlanet = gameObject;
+
+                    int RandomEnemy = Random.Range(0, yellowEnemies.Length);
+                    en.GetComponent<EnemyAI>().eData = yellowEnemies[RandomEnemy];
+                    en.SetActive(true);
+                }
+            } 
+        }
+    }
+
+    void EnemyLocation()
+    {
+        //SpawnLocation
+        float xOffset;
+        float yOffset;
+        float xposNeg = Random.Range(0, 2);
+        if (xposNeg == 0)
+        {
+            xOffset = Random.Range(7, 12);
+        }
+        else
+        {
+            xOffset = Random.Range(-7, -12);
+        }
+        float yposNeg = Random.Range(0, 2);
+        if (yposNeg == 0)
+        {
+            yOffset = Random.Range(7, 12);
+        }
+        else
+        {
+            yOffset = Random.Range(-7, -12);
+        }
+
+        Vector3 location = new Vector3(gameObject.transform.position.x + xOffset, gameObject.transform.position.y + yOffset, 0);
     }
 
     IEnumerator DestroyPlanet()
