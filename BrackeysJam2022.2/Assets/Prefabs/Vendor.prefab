@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8186873725985397480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.980463, y: 13.980463, z: 13.980463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 6
 --- !u!114 &8924435625369740759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,17 +61,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa79a2d4a376934f840c3633625a1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  canvas: {fileID: 0}
   healthFuel: {fileID: 0}
   distance: {fileID: 0}
   nuggets: {fileID: 0}
   vendorUI: {fileID: 0}
-  firstname: []
-  lastname: []
-  planetname: []
-  aliens: []
-  dialogue: []
+  firstname:
+  - man
+  - women
+  lastname:
+  - hello
+  - balls
+  planetname:
+  - rgrgrgrgrgrgr
+  - yjyjyjyiyuy
+  aliens:
+  - {fileID: 21300000, guid: 230e26b4b99fdca4281fdaff4530142b, type: 3}
+  - {fileID: 21300000, guid: 8463ba8aa751560479a18d71c0e077e8, type: 3}
+  - {fileID: 21300000, guid: 413764aa1b6f61c48ad2a4ed95e98113, type: 3}
+  - {fileID: 21300000, guid: 95b5611d0e2a2314ab2d4e94b3194f5d, type: 3}
+  - {fileID: 21300000, guid: d00b3ae4d88b1e448a226e9760607c7a, type: 3}
+  - {fileID: 21300000, guid: 9bb9e0f7ff9738c40bef4e537fb107bd, type: 3}
+  - {fileID: 21300000, guid: 07506815775eed141b475f8ca65ebd3f, type: 3}
+  - {fileID: 21300000, guid: 31047dcb7a913da4d95ba9019e03488d, type: 3}
+  - {fileID: 21300000, guid: d75ed5c0287de3b4f8d6b50747e27d2d, type: 3}
+  - {fileID: 21300000, guid: 58ae371e165c418499837930932622c8, type: 3}
+  - {fileID: 21300000, guid: 2b4dd57e254f4614fa5533341805051f, type: 3}
+  - {fileID: 21300000, guid: 6da181222df037042968b5463dbc0445, type: 3}
+  - {fileID: 21300000, guid: 4dc4c12d97fae7847a64b0b98734224c, type: 3}
+  - {fileID: 21300000, guid: 0e228e13c4fe5ca4fa17649dccd746c9, type: 3}
+  - {fileID: 21300000, guid: 1035dec0569ca224e986c8dbc922d6f2, type: 3}
+  - {fileID: 21300000, guid: 8b0a7c5ca6a5466458827c375eae5a4f, type: 3}
+  - {fileID: 21300000, guid: cdeb7e06f6d09844fa75318030820cba, type: 3}
+  - {fileID: 21300000, guid: 71837680419ffb9499022e1ebba554c2, type: 3}
+  - {fileID: 21300000, guid: e4a255192fb25234a9601cc3d5cf849d, type: 3}
+  - {fileID: 21300000, guid: 465eba1480957a54d8056efbbc76a6c1, type: 3}
+  - {fileID: 21300000, guid: 25bec08bc369b694a8fd3fef98660364, type: 3}
+  - {fileID: 21300000, guid: 1d663ac0b1e94fc42ae2dd9767dbc2d4, type: 3}
+  - {fileID: 21300000, guid: 66c41a5d79689804e8b21a3c7d11d0fb, type: 3}
+  - {fileID: 21300000, guid: b6727e082736d6244803e1a10659ee67, type: 3}
+  - {fileID: 21300000, guid: fd574e71cada8544cbaa58af0a8e3fec, type: 3}
+  - {fileID: 21300000, guid: b5af043b804bca74b9fa032d5387bdff, type: 3}
+  - {fileID: 21300000, guid: 5e1112687e3d72a4eb257a2000df0ffd, type: 3}
+  - {fileID: 21300000, guid: 9cfc9c4630b974f4490a9a6d44d24132, type: 3}
+  - {fileID: 21300000, guid: 30e59c8eceb7dc749a849afa728367f3, type: 3}
+  - {fileID: 21300000, guid: 4748be127e5444347bc349e375ec2bab, type: 3}
+  - {fileID: 21300000, guid: b34abca115642ab4cb04e5bb9289f47c, type: 3}
+  dialogue:
+  - tyefbtydf
+  - tyjyello
   alienname: {fileID: 0}
   planetdescription: {fileID: 0}
   dialoguetxt: {fileID: 0}
   alien: {fileID: 0}
+  bg: {fileID: 0}
+  alienBG: {fileID: 0}

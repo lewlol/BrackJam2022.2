@@ -151,6 +151,7 @@ public class Planet : UnityEngine.MonoBehaviour
 
                 //VendorSpawn
                 Instantiate(vendor, gameObject.transform.position, Quaternion.identity);
+                health = 99999;
             } 
         }
     }

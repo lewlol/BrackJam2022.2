@@ -327,7 +327,6 @@ public class EnemyAI : MonoBehaviour
         waitingToMove = true;
 
         float delay = Random.Range(0, 8);
-        Debug.Log(delay);
         yield return new WaitForSeconds(delay);
 
         waitingToMove = false;
