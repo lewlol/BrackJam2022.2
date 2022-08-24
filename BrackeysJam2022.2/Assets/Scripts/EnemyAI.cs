@@ -48,6 +48,9 @@ public class EnemyAI : MonoBehaviour
     //Bullet Prefab
     GameObject bullet;
 
+    //Death Particles
+    GameObject dParticles;
+
     //Player/Enemy Reference - To Track and Kill Player/Enemy
     public GameObject player;
 
@@ -71,6 +74,9 @@ public class EnemyAI : MonoBehaviour
     //Shooting Vars
     float delay;
 
+    //Dead Bool
+    bool dead;
+
     private void Awake()
     {
         //Assignables
@@ -85,10 +91,16 @@ public class EnemyAI : MonoBehaviour
 
         //Saving the Planets Location (Stops Error on Destroying the Planet)
         hPlanet = homePlanet.transform.position;
+
+        //Dead Check
+        dead = false;
     }
     private void FixedUpdate()
     {
-        Movement();
+        if (!dead)
+        {
+            Movement();
+        }
     }
     void AssignStats() //This Assigns Stats from the eData (Enemy Data Scriptable Object)
     {
@@ -97,6 +109,7 @@ public class EnemyAI : MonoBehaviour
         chaseRadius = eData.chaseRadius;
         attackRadius = eData.attackRadius;
         damage = eData.damage;
+        dParticles = eData.dParticles;
 
         sprite = eData.sprite;
         sr.sprite = sprite;
@@ -237,11 +250,35 @@ public class EnemyAI : MonoBehaviour
     {
         health -= damage;
 
-        neutralState = false;
-        agressiveState = true;
+        if(health <= 0)
+        {
+            dead = true;
+            StartCoroutine(Death());
+        }
+        if (neutralState)
+        {
+            neutralState = false;
+            agressiveState = true;
 
-        wandering = false;
-        findingLocation = false;
+            wandering = false;
+            findingLocation = false;
+        }
+    }
+
+    IEnumerator Death()
+    {
+        CircleCollider2D cc = GetComponent<CircleCollider2D>();
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        cc.enabled = false;
+        sr.enabled = false;
+
+        Instantiate(dParticles, gameObject.transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(dParticles);
+        Destroy(gameObject);
     }
     IEnumerator WaitToMove()
     {
