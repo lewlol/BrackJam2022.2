@@ -11,8 +11,10 @@ public class Vendor : MonoBehaviour
     public string[] firstname;
     public string[] lastname;
     public string[] planetname;
+    public string[] dialogue;
     public Text alienname;
     public Text planetdescription;
+    public Text dialoguetxt;
 
 
     private void Awake()
@@ -20,9 +22,11 @@ public class Vendor : MonoBehaviour
         int fName = Random.Range(0, firstname.Length);
         int lName = Random.Range(0, lastname.Length);
         int pname = Random.Range(0, planetname.Length);
+        int dial = Random.Range(0, dialogue.Length);
 
         alienname.text = firstname[fName] + " " + lastname[lName];
         planetdescription.text = "Welcome to  " + planetname[pname];
+        dialoguetxt.text = dialogue[dial];
     }
 
     private void OnTriggerStay2D(Collider2D other)
