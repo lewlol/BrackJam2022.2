@@ -209,10 +209,11 @@ public class EnemyAI : MonoBehaviour
             bul.GetComponent<eBullet>().lifetime = bulletLifetime;
             bul.GetComponent<eBullet>().damage = damage;
             bul.GetComponent<eBullet>().passThrough = bulletPassThrough;
+            bul.GetComponent<eBullet>().speed = bulletSpeed;
 
-            //Bullet Momentum
-            Rigidbody2D rb = bul.GetComponent<Rigidbody2D>();
-            rb.AddForce(bul.transform.forward * bulletSpeed, ForceMode2D.Impulse);
+            Vector2 direction = transform.position - player.transform.position;
+            bul.GetComponent<eBullet>().direction = direction;
+
 
             //Reset Timer
             delay = bulletDelay;

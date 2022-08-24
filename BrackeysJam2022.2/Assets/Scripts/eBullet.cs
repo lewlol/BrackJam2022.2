@@ -7,12 +7,22 @@ public class eBullet : UnityEngine.MonoBehaviour
     [Header("Variables")]
     public float lifetime;
     public float damage;
+    public float speed;
+
+    [HideInInspector] public Vector2 direction;
     [Header("Bools")]
     public bool passThrough;
+
+    Rigidbody2D bulRB;
 
     private void Awake()
     {
         Destroy(gameObject, lifetime);
+        bulRB = GetComponent<Rigidbody2D>();
+    }
+    private void FixedUpdate()
+    {
+        bulRB.AddForce(-direction * speed, ForceMode2D.Impulse);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
