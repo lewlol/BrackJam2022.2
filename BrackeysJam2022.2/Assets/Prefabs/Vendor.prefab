@@ -73,8 +73,22 @@ MonoBehaviour:
   - hello
   - balls
   planetname:
-  - rgrgrgrgrgrgr
-  - yjyjyjyiyuy
+  - Yondoo
+  - Nebula
+  - Hawthrak
+  - Pythoryuo
+  - Hyjkeef
+  - Klokrak
+  - Mars
+  - Pogolio
+  - Brackland
+  - Omniscience
+  - Uranus
+  - Pluto
+  - Hytfran
+  - Zoyglart
+  - Zirconia
+  - Zirconia
   aliens:
   - {fileID: 21300000, guid: 230e26b4b99fdca4281fdaff4530142b, type: 3}
   - {fileID: 21300000, guid: 8463ba8aa751560479a18d71c0e077e8, type: 3}
@@ -108,8 +122,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4748be127e5444347bc349e375ec2bab, type: 3}
   - {fileID: 21300000, guid: b34abca115642ab4cb04e5bb9289f47c, type: 3}
   dialogue:
-  - tyefbtydf
-  - tyjyello
+  - 
+  - 
   alienname: {fileID: 0}
   planetdescription: {fileID: 0}
   dialoguetxt: {fileID: 0}

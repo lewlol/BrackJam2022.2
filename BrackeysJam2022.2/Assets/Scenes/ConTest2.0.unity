@@ -62510,7 +62510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa79a2d4a376934f840c3633625a1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1534855281}
   canvas: {fileID: 0}
   healthFuel: {fileID: 0}
   distance: {fileID: 0}
@@ -62610,6 +62609,8 @@ MonoBehaviour:
   planetdescription: {fileID: 378223090}
   dialoguetxt: {fileID: 1348721327}
   alien: {fileID: 0}
+  bg: {fileID: 0}
+  alienBG: {fileID: 0}
 --- !u!58 &1186344500
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -107139,7 +107140,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005430110}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
