@@ -54323,7 +54323,7 @@ GameObject:
   - component: {fileID: 1037637487}
   - component: {fileID: 1037637486}
   m_Layer: 5
-  m_Name: Text
+  m_Name: alienname
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62182,6 +62182,25 @@ MonoBehaviour:
   player: {fileID: 1534855281}
   stats: {fileID: 584429237}
   vendorui: {fileID: 2005430113}
+  firstname:
+  - Bob
+  - Glarg
+  - Goob
+  - Pog
+  - Chinger
+  - Chmmr
+  - Arg
+  - Fred
+  - Nobu
+  - Vxie
+  - Omnipoid
+  - Connor
+  - Lew
+  - Alarba
+  - Ailee
+  - Freeb
+  lastname: []
+  alienname: {fileID: 1037637486}
 --- !u!58 &1186344500
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -106661,7 +106680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2005430111
 MonoBehaviour:
   m_ObjectHideFlags: 0
