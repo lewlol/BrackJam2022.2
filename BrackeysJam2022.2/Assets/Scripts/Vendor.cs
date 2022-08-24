@@ -22,7 +22,7 @@ public class Vendor : MonoBehaviour
         int pname = Random.Range(0, planetname.Length);
 
         alienname.text = firstname[fName] + " " + lastname[lName];
-        planetdescription.text = "Welcome to " + planetname[pname];
+        planetdescription.text = "Welcome to  " + planetname[pname];
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -32,7 +32,7 @@ public class Vendor : MonoBehaviour
             player.constraints = RigidbodyConstraints2D.FreezeAll;
             Debug.Log("clicked");
             stats.enabled = false;
-            planetdescription.text = "Welcome to " + planetname[pname];
+          
 
 
             vendorui.enabled = true;
