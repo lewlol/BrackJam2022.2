@@ -103,6 +103,7 @@ MonoBehaviour:
   lifetime: 2
   damage: 1
   passThrough: 0
+  particles: {fileID: 3019708764860945978, guid: c6600a440a2c5f041a65d912be57f136, type: 3}
 --- !u!50 &476700128027883845
 Rigidbody2D:
   serializedVersion: 4

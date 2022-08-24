@@ -20,6 +20,7 @@ public class EnemyAI : MonoBehaviour
 
     //Home Planet Reference - Wander Around this Point
     public GameObject homePlanet;
+    private Vector2 hPlanet;
 
     //Team - Which team the Enemy is On
     bool redTeam;
@@ -81,6 +82,9 @@ public class EnemyAI : MonoBehaviour
 
         //Find a Location
         findingLocation = true;
+
+        //Saving the Planets Location (Stops Error on Destroying the Planet)
+        hPlanet = homePlanet.transform.position;
     }
     private void FixedUpdate()
     {
@@ -141,7 +145,7 @@ public class EnemyAI : MonoBehaviour
                     yOffset = Random.Range(-7, -12);
                 }
 
-                location = new Vector3(homePlanet.transform.position.x + xOffset, homePlanet.transform.position.y + yOffset, 0);
+                location = new Vector3(hPlanet.x + xOffset, hPlanet.y + yOffset, 0);
 
                 wandering = true;
                 findingLocation = false;           
@@ -202,7 +206,7 @@ public class EnemyAI : MonoBehaviour
         float countdown = delay -= Time.deltaTime;
         if (countdown <= 0)
         {
-            //Instantiate Bullet
+            //Create a Var
             var bul = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
             //Assign Stats to Bullet
@@ -213,6 +217,8 @@ public class EnemyAI : MonoBehaviour
 
             Vector2 direction = transform.position - player.transform.position;
             bul.GetComponent<eBullet>().direction = direction;
+
+            bul.GetComponent<eBullet>().StatsAssigned();
 
 
             //Reset Timer

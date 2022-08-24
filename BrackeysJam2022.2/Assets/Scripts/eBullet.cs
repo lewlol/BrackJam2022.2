@@ -16,13 +16,18 @@ public class eBullet : UnityEngine.MonoBehaviour
     Rigidbody2D bulRB;
 
     private void Awake()
-    {
-        Destroy(gameObject, lifetime);
+    {   
         bulRB = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
     {
+        direction.Normalize();
         bulRB.AddForce(-direction * speed, ForceMode2D.Impulse);
+    }
+
+    public void StatsAssigned()
+    {
+        Destroy(gameObject, lifetime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

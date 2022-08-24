@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     [Header("Bools")]
     public bool passThrough;
 
+    [Header("Hit Particles")]
+    public GameObject particles;
+
     private void Awake()
     {
         Destroy(gameObject, lifetime);
@@ -23,6 +26,7 @@ public class Bullet : MonoBehaviour
                 if(collision.gameObject.GetComponent<EnemyAI>() != null)
                 {
                     collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+                    SpawnParticles();
                 }
                 Destroy(gameObject);
                 return;
@@ -30,6 +34,7 @@ public class Bullet : MonoBehaviour
             if(collision.gameObject.tag == "Planet")
             {
                 collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
+                SpawnParticles();
                 Destroy(gameObject);
                 return;
             }
@@ -39,11 +44,19 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.tag == "Enemy")
             {
                 collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+                SpawnParticles();
             }
             if (collision.gameObject.tag == "Planet")
             {
                 collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
+                SpawnParticles();
             }
         }
     }
+
+    void SpawnParticles()
+    {
+        Instantiate(particles, gameObject.transform.position, Quaternion.identity);
+    }
+
 }
