@@ -8,7 +8,10 @@ public class Main : UnityEngine.MonoBehaviour
     public GameObject particles;
     public GameObject button;
     public int scene;
-    public GameObject canvas;
+    public GameObject maincanvas;
+    public GameObject infocanvas;
+    public GameObject menu;
+    public GameObject infomenu;
     private void OnMouseEnter()
     {
         button.GetComponent<Spin>().enabled = true;
@@ -32,11 +35,14 @@ public class Main : UnityEngine.MonoBehaviour
 
     IEnumerator EndGame()
     {
-        canvas.SetActive(false);
+        maincanvas.SetActive(false);
         var p = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
         button.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         Destroy(p);
+        infocanvas.SetActive(true);
+        menu.SetActive(false);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
     }
 
