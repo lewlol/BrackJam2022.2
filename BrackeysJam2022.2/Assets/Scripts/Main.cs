@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Main : UnityEngine.MonoBehaviour
 {
+    public GameObject particles;
     public GameObject button;
     public int scene;
+    public GameObject canvas;
     private void OnMouseEnter()
     {
         button.GetComponent<Spin>().enabled = true;
@@ -30,9 +32,12 @@ public class Main : UnityEngine.MonoBehaviour
 
     IEnumerator EndGame()
     {
+        canvas.SetActive(false);
+        var p = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
         button.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(scene);
+        Destroy(p);
+        SceneManager.LoadScene(0);
     }
 
 }

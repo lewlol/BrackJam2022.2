@@ -435,10 +435,10 @@ GameObject:
   - component: {fileID: 1022344977}
   - component: {fileID: 1022344976}
   - component: {fileID: 1022344975}
-  - component: {fileID: 1022344978}
   - component: {fileID: 1022344979}
+  - component: {fileID: 1022344980}
   m_Layer: 0
-  m_Name: Options
+  m_Name: Exit
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,20 +524,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1022344978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022344974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e800a903e20b74eb1f6e442f101102, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1022344974}
-  scene: 0
 --- !u!61 &1022344979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -564,6 +550,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.240363, y: 3.314871}
   m_EdgeRadius: 0
+--- !u!114 &1022344980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022344974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f93a738d41246458bef86797e4ec65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 3893091183529446581, guid: ffe5a2c315a77044eb14f3cd0102b606, type: 3}
+  button: {fileID: 1022344974}
+  canvas: {fileID: 746357268}
 --- !u!1 &1311972508
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,8 +805,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1612856495
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d1c683d346abaaa44925da506aab3703, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -858,8 +859,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e800a903e20b74eb1f6e442f101102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: {fileID: 3893091183529446581, guid: ffe5a2c315a77044eb14f3cd0102b606, type: 3}
   button: {fileID: 1374841247}
   scene: 0
+  canvas: {fileID: 0}
 --- !u!61 &1374841252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -898,7 +901,7 @@ GameObject:
   - component: {fileID: 1437711581}
   - component: {fileID: 1437711580}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -919,10 +922,10 @@ RectTransform:
   m_Father: {fileID: 746357272}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 614, y: -334}
-  m_SizeDelta: {x: -1600, y: -760}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -346, y: 206}
+  m_SizeDelta: {x: 320, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437711580
 MonoBehaviour:
@@ -957,7 +960,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: Exit
 --- !u!222 &1437711581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1083,10 +1086,10 @@ RectTransform:
   m_Father: {fileID: 746357272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 599, y: 25}
-  m_SizeDelta: {x: -1600, y: -760}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -361, y: 25}
+  m_SizeDelta: {x: 320, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792335069
 MonoBehaviour:
@@ -1142,6 +1145,7 @@ GameObject:
   - component: {fileID: 2069568101}
   - component: {fileID: 2069568103}
   - component: {fileID: 2069568104}
+  - component: {fileID: 2069568105}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -1243,3 +1247,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBullet: {fileID: 3986455979624542089, guid: e5c3ecb1ceee6924998b5d96e283d827, type: 3}
   bSpeed: 5
+--- !u!114 &2069568105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069568100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e124f4ec3a41b14dae46ba7ceecf446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 0
+  fuel: 100
+  maxFuel: 0
+  nuggets: 100
+  particles: {fileID: 0}
+  retryMenu: {fileID: 0}
