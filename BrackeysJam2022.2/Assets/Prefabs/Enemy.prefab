@@ -140,6 +140,7 @@ MonoBehaviour:
   eData: {fileID: 11400000, guid: 11932fe78df64a644bcc595419677d71, type: 2}
   homePlanet: {fileID: 0}
   player: {fileID: 0}
+  fuelDrop: {fileID: 267636531003836247, guid: 445e6a8f66d693343a2f9adb38789533, type: 3}
 --- !u!1 &7296939183325487432
 GameObject:
   m_ObjectHideFlags: 0
