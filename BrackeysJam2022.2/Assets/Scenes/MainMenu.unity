@@ -862,7 +862,7 @@ MonoBehaviour:
   particles: {fileID: 3893091183529446581, guid: ffe5a2c315a77044eb14f3cd0102b606, type: 3}
   button: {fileID: 1374841247}
   scene: 0
-  canvas: {fileID: 0}
+  canvas: {fileID: 746357268}
 --- !u!61 &1374841252
 BoxCollider2D:
   m_ObjectHideFlags: 0
