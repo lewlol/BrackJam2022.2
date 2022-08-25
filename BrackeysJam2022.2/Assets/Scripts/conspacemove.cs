@@ -18,6 +18,11 @@ public class conspacemove : MonoBehaviour
     private SpaceshipStats stats;
 
     bool hasFuel;
+
+    public AudioSource boostSource;
+    public AudioSource moveSource;
+    public AudioClip move;
+    public AudioClip booster;
     void Start()
     {
         tr = GetComponent<TrailRenderer>();
@@ -52,6 +57,8 @@ public class conspacemove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f && yAxis > 0)
             {
                 Boost();
+                boostSource.clip = booster;
+                boostSource.Play();
             }
 
             //Slow Speed Backwards
@@ -62,6 +69,12 @@ public class conspacemove : MonoBehaviour
             if (yAxis == 0)
             {
                 extraspeed = 15;
+            }
+
+            if(yAxis > 0 && moveSource.isPlaying == false)
+            {
+                moveSource.clip = move;
+                moveSource.Play();
             }
         }
     }
