@@ -65,7 +65,6 @@ MonoBehaviour:
   healthFuel: {fileID: 0}
   distance: {fileID: 0}
   nuggets: {fileID: 0}
-  vendorUI: {fileID: 0}
   firstname:
   - Arg
   - Aboof
@@ -130,6 +129,46 @@ MonoBehaviour:
   - Xouhiron
   - Shrewtran
   - Todd
+  - Hartrak
+  - Glooba
+  - Gronhor
+  - Yertle
+  - Alion
+  - Arieta
+  - Lornd
+  - Craxed
+  - Gorn
+  - Bluthauser
+  - Tranqlit
+  - Clortoz
+  - Rubendez
+  - Tranja
+  - Jordo
+  - Kraxhorn
+  - Yartlescar
+  - Trandhor
+  - Charthorn
+  - Ghrantdor
+  - Lortghar
+  - Looftran
+  - Jorkhon
+  - Blugruff
+  - Bludeghor
+  - Zorxen
+  - Xeorn
+  - Xosret
+  - Zasfret
+  - Lopreta
+  - Monfraw
+  - Wartyez
+  - Yetxes
+  - Xeorthork
+  - Loprety
+  - Kirzsern
+  - Prezdert
+  - Unxestaz
+  - Lorfrexsez
+  - Tranderty
   planetname:
   - Yondoo
   - Nebula
