@@ -42,6 +42,7 @@ public class Main : UnityEngine.MonoBehaviour
         Destroy(p);
         infocanvas.SetActive(true);
         menu.SetActive(false);
+        infomenu.SetActive(true);
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
     }
