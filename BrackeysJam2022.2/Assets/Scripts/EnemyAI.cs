@@ -85,7 +85,7 @@ public class EnemyAI : MonoBehaviour
     GameObject cam;
 
     //Kamikaze KB
-    float strength = 50;
+    float strength = 25;
     float kbDelay = 0.15f;
 
     private void Awake()
@@ -179,11 +179,6 @@ public class EnemyAI : MonoBehaviour
             //Cant Track Player
             if (playerDistance > chaseRadius)
             {
-                if (!findingLocation)
-                {
-                    findingLocation = true;
-                }
-
                 Wandering();
             }
 
@@ -323,7 +318,7 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine(Death());
                 StartCoroutine(CamShake());
 
-                Vector2 direction = (transform.position - collision.transform.position).normalized;
+                Vector2 direction = (transform.position + collision.transform.position).normalized;
                 player.GetComponent<Rigidbody2D>().AddForce(direction * strength, ForceMode2D.Impulse);
             }
         }
