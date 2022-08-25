@@ -61,8 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa79a2d4a376934f840c3633625a1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  bullet: {fileID: 0}
   canvas: {fileID: 0}
   healthFuel: {fileID: 0}
   distance: {fileID: 0}
@@ -288,19 +286,18 @@ MonoBehaviour:
     does not fit around here look at all our fine buildings and architecture. Nonethelesss
     i see thos gold nuggets they would make a splended antenna hat fro my mother
     would u mind trading them for some of our wares? You wont regret it.
-  - Oh hello dear traveler welcome to our beautiful magnificent planet oh that ship
-    does not fit around here look at all our fine buildings and architecture. Nonethelesss
-    i see thos gold nuggets they would make a splended antenna hat fro my mother
-    would u mind trading them for some of our wares? You wont regret it.
+  - Hello traveler i see u have found our wonderful planet welcome. SO lets get to
+    the business u have gold and we have great engineers. How about u let us off
+    with some of that gold and we make u better so your jounrney is less perilous
+    yes sounds great in my opinion.
+  - Hello alien well i havent seen u around here before anyway. I need some gold
+    and i see u have some. Its my companions lunar day and i want to surprise her
+    with a golden gift so. If u give me some of that gold im sure i can help u out.
   alienname: {fileID: 0}
   planetdescription: {fileID: 0}
   dialoguetxt: {fileID: 0}
   alien: {fileID: 0}
   bg: {fileID: 0}
   alienBG: {fileID: 0}
-  upgrade:
-  - {fileID: 11400000, guid: 5e21ddcdb9bb171488edb5b018998dce, type: 2}
-  - {fileID: 11400000, guid: 83ccca4ae6ed88642b454f9151e70f7c, type: 2}
-  - {fileID: 11400000, guid: 9a6ba0614e4dc1741a6729444fcfc851, type: 2}
+  upgrade: []
   upgradetext: {fileID: 0}
-  acceptText: {fileID: 0}
