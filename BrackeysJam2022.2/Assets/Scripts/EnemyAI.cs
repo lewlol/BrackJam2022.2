@@ -98,6 +98,7 @@ public class EnemyAI : MonoBehaviour
     public AudioClip kamiSound;
     public AudioSource shootingSource;
     public AudioSource deathSource;
+    public AudioSource hitSound;
 
     private void Awake()
     {
@@ -312,6 +313,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        hitSound.Play();
 
         if(health <= 0)
         {
