@@ -33,10 +33,13 @@ public class Bullet : MonoBehaviour
             }
             if(collision.gameObject.tag == "Planet")
             {
-                collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
-                SpawnParticles();
-                Destroy(gameObject);
-                return;
+                if(collision.gameObject.GetComponent<Planet>() != null)
+                {
+                    collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
+                    SpawnParticles();
+                    Destroy(gameObject);
+                    return;
+                }
             }
         }
         if (passThrough)
