@@ -76,6 +76,10 @@ public class conspacemove : MonoBehaviour
                 moveSource.clip = move;
                 moveSource.Play();
             }
+            if(yAxis <= 0)
+            {
+                moveSource.Stop();
+            }
         }
     }
 

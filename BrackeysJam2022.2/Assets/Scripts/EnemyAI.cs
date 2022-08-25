@@ -164,7 +164,7 @@ public class EnemyAI : MonoBehaviour
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
 
         //Despawn
-        if(playerDistance >= 100)
+        if(playerDistance >= 50)
         {
             Destroy(gameObject);
         }

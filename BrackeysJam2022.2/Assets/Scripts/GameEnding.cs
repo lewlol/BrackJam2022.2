@@ -11,11 +11,7 @@ public class GameEnding : UnityEngine.MonoBehaviour
     public GameObject earth;
     public Camera maincam;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+    public GameObject fadeout;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -29,8 +25,9 @@ public class GameEnding : UnityEngine.MonoBehaviour
         ui.enabled = false;
         prigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         maincam.GetComponent<CamFollow>().target = earth.transform;
-        yield return new WaitForSeconds(2f);
-
+        yield return new WaitForSeconds(1f);
+        fadeout.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(1);
     }
 

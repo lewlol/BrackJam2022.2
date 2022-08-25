@@ -130,6 +130,15 @@ public class Vendor : MonoBehaviour
                 player.GetComponent<SpaceshipStats>().nuggets -= activeUpgrade.cost;
             }
         }
+
+        //Distance Between Enemy and Player
+        float playerDistance = Vector2.Distance(transform.position, player.transform.position);
+
+        //Despawn
+        if (playerDistance >= 100)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
