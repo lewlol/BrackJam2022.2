@@ -88,6 +88,12 @@ public class EnemyAI : MonoBehaviour
     float strength = 25;
     float kbDelay = 0.15f;
 
+    //Detect Planet Hit
+    float planetOGhealth;
+
+    //Enemy Drops
+    [SerializeField] private GameObject fuelDrop;
+
     private void Awake()
     {
         //Assignables
@@ -107,6 +113,8 @@ public class EnemyAI : MonoBehaviour
         dead = false;
 
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+
+        planetOGhealth = homePlanet.GetComponent<Planet>().health;
     }
     private void FixedUpdate()
     {
@@ -170,6 +178,12 @@ public class EnemyAI : MonoBehaviour
         if (neutralState)
         {
             Wandering();
+
+            if(planetOGhealth > homePlanet.GetComponent<Planet>().health)
+            {
+                //Planet Hit
+                PlanetAttacked();
+            }
         }
 
         //Agressive State
@@ -338,6 +352,12 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator Death()
     {
+        int fDrop = Random.Range(0, 2);
+        if(fDrop == 0)
+        {
+            Instantiate(fuelDrop, gameObject.transform.position, Quaternion.identity);
+        }
+
         CircleCollider2D cc = GetComponent<CircleCollider2D>();
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
 

@@ -73,13 +73,13 @@ public class Planet : UnityEngine.MonoBehaviour
     {
         //Can Spawn Enemies?
         int spawnEnemy = Random.Range(0, 11);
-        if(spawnEnemy > 3)
+        if(spawnEnemy > 2)
         {
             //Team?
             int team = Random.Range(0, 4);
             if(team == 0) //Red Team
             {
-                int enemyCount = Random.Range(1, 7);
+                int enemyCount = Random.Range(2, 11);
                 for (int x = 0;x < enemyCount; x++)
                 {
                     EnemyLocation();
@@ -97,7 +97,7 @@ public class Planet : UnityEngine.MonoBehaviour
             }
             else if(team == 1) //Blue Team
             {
-                int enemyCount = Random.Range(1, 7);
+                int enemyCount = Random.Range(2, 11);
                 for (int x = 0; x < enemyCount; x++)
                 {
                     EnemyLocation();
@@ -115,7 +115,7 @@ public class Planet : UnityEngine.MonoBehaviour
             }
             else if(team == 2) //Green Team
             {
-                int enemyCount = Random.Range(1, 7);
+                int enemyCount = Random.Range(2, 11);
                 for (int x = 0; x < enemyCount; x++)
                 {
                     EnemyLocation();
@@ -133,7 +133,7 @@ public class Planet : UnityEngine.MonoBehaviour
             }
             else if(team == 3) //Friendly Yellow Team with Vendor
             {
-                int enemyCount = Random.Range(1, 7);
+                int enemyCount = Random.Range(2, 11);
                 for (int x = 0; x < enemyCount; x++)
                 {
                     EnemyLocation();
