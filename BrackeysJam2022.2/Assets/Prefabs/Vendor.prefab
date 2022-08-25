@@ -286,13 +286,18 @@ MonoBehaviour:
     does not fit around here look at all our fine buildings and architecture. Nonethelesss
     i see thos gold nuggets they would make a splended antenna hat fro my mother
     would u mind trading them for some of our wares? You wont regret it.
-  - Oh hello dear traveler welcome to our beautiful magnificent planet oh that ship
-    does not fit around here look at all our fine buildings and architecture. Nonethelesss
-    i see thos gold nuggets they would make a splended antenna hat fro my mother
-    would u mind trading them for some of our wares? You wont regret it.
+  - Hello traveler i see u have found our wonderful planet welcome. SO lets get to
+    the business u have gold and we have great engineers. How about u let us off
+    with some of that gold and we make u better so your jounrney is less perilous
+    yes sounds great in my opinion.
+  - Hello alien well i havent seen u aorund here before anyway. I need some gold
+    and i see u have some. Its my companions lunar day and i want to surprise her
+    with a golden gift so. If u give me some of tyhat gold im sure i can help u out.
   alienname: {fileID: 0}
   planetdescription: {fileID: 0}
   dialoguetxt: {fileID: 0}
   alien: {fileID: 0}
   bg: {fileID: 0}
   alienBG: {fileID: 0}
+  upgrade: []
+  upgradetext: {fileID: 0}
