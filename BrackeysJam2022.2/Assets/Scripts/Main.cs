@@ -12,6 +12,7 @@ public class Main : UnityEngine.MonoBehaviour
     public GameObject infocanvas;
     public GameObject menu;
     public GameObject infomenu;
+    public bool info;
     private void OnMouseEnter()
     {
         button.GetComponent<Spin>().enabled = true;
@@ -35,6 +36,7 @@ public class Main : UnityEngine.MonoBehaviour
 
     IEnumerator EndGame()
     {
+        info = true;
         maincanvas.SetActive(false);
         var p = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
         button.GetComponent<SpriteRenderer>().enabled = false;
@@ -43,8 +45,19 @@ public class Main : UnityEngine.MonoBehaviour
         infocanvas.SetActive(true);
         menu.SetActive(false);
         infomenu.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(0);
+        
+    }
+
+    private void Update()
+    {
+        if(info = true && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(0);
+        }
+            
+
+        
+
     }
 
 }
