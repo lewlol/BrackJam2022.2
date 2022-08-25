@@ -13,6 +13,10 @@ public class Main : UnityEngine.MonoBehaviour
     public GameObject menu;
     public GameObject infomenu;
     public bool info;
+
+    //Fades
+    public GameObject fadeIn;
+    public GameObject fadeOut;
     private void OnMouseEnter()
     {
         button.GetComponent<Spin>().enabled = true;
@@ -37,10 +41,17 @@ public class Main : UnityEngine.MonoBehaviour
     IEnumerator EndGame()
     {
         info = true;
-        maincanvas.SetActive(false);
         var p = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
         button.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(2f);
+        GameObject startText = GameObject.Find("StartText");
+        startText.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+
+        fadeIn.SetActive(true);
+        fadeOut.SetActive(false);
+        maincanvas.SetActive(false);
         Destroy(p);
         infocanvas.SetActive(true);
         menu.SetActive(false);
@@ -52,12 +63,14 @@ public class Main : UnityEngine.MonoBehaviour
     {
         if(info = true && Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(0);
+            StartCoroutine(ChangingToLevel());
         }
-            
-
-        
-
     }
 
+    IEnumerator ChangingToLevel()
+    {
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(0);
+    }
 }
