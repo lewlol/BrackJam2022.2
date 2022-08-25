@@ -174,6 +174,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6f6757b40be7d4446b2bbddd8c074e4c, type: 3}
   - {fileID: 21300000, guid: e1fb88174a500ea4b86e9200c5eb0e99, type: 3}
   - {fileID: 21300000, guid: 80620cfa7aacf3b448425d5f92d90b3d, type: 3}
+  minimapSR: {fileID: 4537622164188702922}
 --- !u!1 &4512595359860954031
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 4512595359860954031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 106}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4189602701185508513}
@@ -248,7 +249,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.23148806, g: 0.9622642, b: 0.2993523, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
