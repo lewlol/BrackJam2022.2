@@ -37,6 +37,11 @@ public class Vendor : MonoBehaviour
     //Alien BG
     public GameObject alienBG;
 
+    //Upgrades
+    public Upgrades[] upgrade;
+    private Upgrades activeUpgrade;
+    //Upgrade Offer Text
+    public Text upgradetext;
 
     private void Awake()
     {
@@ -51,6 +56,7 @@ public class Vendor : MonoBehaviour
         alien = GameObject.Find("AVimage").GetComponent<Image>();
         bg = GameObject.Find("BG");
         alienBG = GameObject.Find("Avatar");
+        upgradetext = GameObject.Find("UpgradeText").GetComponent<Text>();
 
         int fName = Random.Range(0, firstname.Length);
         int lName = Random.Range(0, lastname.Length);
@@ -62,6 +68,25 @@ public class Vendor : MonoBehaviour
         alienname.text = firstname[fName] + " " + lastname[lName];
         planetdescription.text = "Welcome to  " + planetname[pname];
         dialoguetxt.text = dialogue[dial];
+        
+
+        //Run Upgrade
+        int randomUpgrade = Random.Range(0, upgrade.Length);
+        activeUpgrade = upgrade[randomUpgrade];
+        if(upgrade[randomUpgrade].upgradeInt == 0)
+        {
+            //Damage Upgrade
+            upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
+        }else if(upgrade[randomUpgrade].upgradeInt == 1)
+        {
+            //HP Repair
+            upgradetext.text = "I Can Repair Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
+        }
+        else if(upgrade[randomUpgrade].upgradeInt == 2)
+        {
+            //MaxHP Upgrade
+            upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
