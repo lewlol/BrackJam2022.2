@@ -13,6 +13,8 @@ public class eBullet : UnityEngine.MonoBehaviour
     [Header("Bools")]
     public bool passThrough;
 
+    [Header("Particles")]
+    public GameObject particles;
     Rigidbody2D bulRB;
 
     private void Awake()
@@ -37,12 +39,14 @@ public class eBullet : UnityEngine.MonoBehaviour
             {
                 collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
                 Destroy(gameObject);
+                SpawnParticles();
                 return;
             }
             if (collision.gameObject.tag == "Planet")
             {
                 collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
                 Destroy(gameObject);
+                SpawnParticles();
                 return;
             }
         }
@@ -51,11 +55,18 @@ public class eBullet : UnityEngine.MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
+                SpawnParticles();
             }
             if (collision.gameObject.tag == "Planet")
             {
                 collision.gameObject.GetComponent<Planet>().TakeDamage(damage);
+                SpawnParticles();
             }
         }
+    }
+
+    void SpawnParticles()
+    {
+        Instantiate(particles, gameObject.transform.position, Quaternion.identity);
     }
 }
