@@ -142,10 +142,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 68c77a930b26ad641adac61888404f8f, type: 2}
   greenEnemies:
   - {fileID: 11400000, guid: 17ad050ef06c26c4b9cf7a6d068057d0, type: 2}
+  - {fileID: 11400000, guid: 4390988ef22eed945aabb57c30650906, type: 2}
+  - {fileID: 11400000, guid: 60861ac384d385e4ab0178d463a6057d, type: 2}
   blueEnemies:
   - {fileID: 11400000, guid: 8964a46922e3cd44db9fe84ad2526b84, type: 2}
+  - {fileID: 11400000, guid: 8b830cb18a1e4f84891c850ada185989, type: 2}
+  - {fileID: 11400000, guid: d7347941a3093844996c63afd4caf2a7, type: 2}
   yellowEnemies:
   - {fileID: 11400000, guid: 0faa93b75979dae4b9acba1d3511bbd6, type: 2}
+  - {fileID: 11400000, guid: 4bf2623af7713dc49a49611be098fb3c, type: 2}
   enemy: {fileID: 5372697666419200928, guid: c8d8d8ebf3b090c4693369f8bcf90061, type: 3}
   vendor: {fileID: 8186873725985397480, guid: bb81e5f136f54d547a70f229870b4086, type: 3}
 --- !u!114 &-2799683450311476372
