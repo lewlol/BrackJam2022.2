@@ -49,6 +49,7 @@ public class Vendor : MonoBehaviour
     public Text acceptText;
 
     bool boughtUpgrade;
+    bool purchaseBool;
 
     private void Awake()
     {
@@ -77,56 +78,64 @@ public class Vendor : MonoBehaviour
         alienname.text = firstname[fName] + " " + lastname[lName];
         planetdescription.text = "Welcome to  " + planetname[pname];
         dialoguetxt.text = dialogue[dial];
-        
+
 
         //Run Upgrade
         int randomUpgrade = Random.Range(0, upgrade.Length);
         activeUpgrade = upgrade[randomUpgrade];
-        if(upgrade[randomUpgrade].upgradeInt == 0)
+        if (upgrade[randomUpgrade].upgradeInt == 0)
         {
             //Damage Upgrade
-            upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
-        }else if(upgrade[randomUpgrade].upgradeInt == 1)
+            upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost + " Nuggets";
+        }
+        else if (upgrade[randomUpgrade].upgradeInt == 1)
         {
             //HP Repair
-            upgradetext.text = "I Can Repair Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
+            upgradetext.text = "I Can Repair Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost + " Nuggets";
         }
-        else if(upgrade[randomUpgrade].upgradeInt == 2)
+        else if (upgrade[randomUpgrade].upgradeInt == 2)
         {
             //MaxHP Upgrade
-            upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
+            upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost + " Nuggets";
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Update()
     {
-        if(collision.gameObject.tag == "Player")
+        if (Input.GetKeyDown(KeyCode.Y) && !boughtUpgrade && purchaseBool)
         {
-            if (Input.GetKeyDown(KeyCode.Y) && !boughtUpgrade)
+            if (player.GetComponent<SpaceshipStats>().nuggets < activeUpgrade.cost)
+            {
+                StartCoroutine(Poor());
+            }
+            else
             {
                 upgradetext.text = "Thank You For Purchasing";
                 acceptText.text = null;
-                if(activeUpgrade.upgradeInt == 0)
+                if (activeUpgrade.upgradeInt == 0)
                 {
                     //Add Damage
                     bullet.GetComponent<Bullet>().damage += activeUpgrade.value;
                 }
-                else if(activeUpgrade.upgradeInt == 1)
+                else if (activeUpgrade.upgradeInt == 1)
                 {
                     //Repair
                     player.GetComponent<SpaceshipStats>().health = player.GetComponent<SpaceshipStats>().maxHealth;
-                }else if(activeUpgrade.upgradeInt == 2)
+                }
+                else if (activeUpgrade.upgradeInt == 2)
                 {
                     //Max HP Increase
                     player.GetComponent<SpaceshipStats>().maxHealth += activeUpgrade.value;
                     player.GetComponent<SpaceshipStats>().health += activeUpgrade.value;
                 }
+                player.GetComponent<SpaceshipStats>().nuggets -= activeUpgrade.cost;
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
+            purchaseBool = true;
             OpenMenu();
         }
     }
@@ -134,6 +143,7 @@ public class Vendor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            purchaseBool = false;
             CloseMenu();
         }
     }
@@ -151,6 +161,8 @@ public class Vendor : MonoBehaviour
         planetdescription.enabled = true;
         dialoguetxt.enabled = true;
         bg.GetComponent<Image>().enabled = true;
+        acceptText.enabled = true;
+        upgradetext.enabled = true;
     }
 
     void CloseMenu()
@@ -166,6 +178,20 @@ public class Vendor : MonoBehaviour
         planetdescription.enabled = false;
         dialoguetxt.enabled = false;
         bg.GetComponent<Image>().enabled = false;
+        acceptText.enabled = false;
+        upgradetext.enabled = false;
     }
+    IEnumerator Poor()
+    {
+        string beforeUpgrade = upgradetext.text;
+        string accText = acceptText.text;
 
+        upgradetext.text = "You Don't Have Enough Nuggets";
+        acceptText.text = null;
+
+        yield return new WaitForSeconds(3f);
+
+        upgradetext.text = beforeUpgrade;
+        acceptText.text = accText;
+    }
 }
