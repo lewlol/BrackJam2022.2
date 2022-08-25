@@ -117,7 +117,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 4.2
 --- !u!114 &4189602701185508518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   nuggets: {fileID: 0}
   redEnemies:
   - {fileID: 11400000, guid: 11932fe78df64a644bcc595419677d71, type: 2}
+  - {fileID: 11400000, guid: 8dfa7aaeebba3ed47b323c7a7ae8765f, type: 2}
   greenEnemies:
   - {fileID: 11400000, guid: 17ad050ef06c26c4b9cf7a6d068057d0, type: 2}
   blueEnemies:

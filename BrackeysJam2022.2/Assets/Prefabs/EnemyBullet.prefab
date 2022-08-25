@@ -142,6 +142,7 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0}
   passThrough: 0
+  particles: {fileID: 7107990716232528256, guid: ef6ffe5db46afec419d5d23465577f79, type: 3}
 --- !u!96 &-8191731020468090924
 TrailRenderer:
   serializedVersion: 2

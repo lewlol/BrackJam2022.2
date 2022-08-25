@@ -81,6 +81,13 @@ public class EnemyAI : MonoBehaviour
     //Dead Bool
     bool dead;
 
+    //Cam Reference
+    GameObject cam;
+
+    //Kamikaze KB
+    float strength = 50;
+    float kbDelay = 0.15f;
+
     private void Awake()
     {
         //Assignables
@@ -98,6 +105,8 @@ public class EnemyAI : MonoBehaviour
 
         //Dead Check
         dead = false;
+
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
     private void FixedUpdate()
     {
@@ -193,7 +202,7 @@ public class EnemyAI : MonoBehaviour
             }
 
             //If Withing Shooting Distance
-            if (playerDistance < attackRadius)
+            if (playerDistance < attackRadius && !kamikazeType)
             {
                 Shooting();
             }
@@ -303,6 +312,33 @@ public class EnemyAI : MonoBehaviour
             wandering = false;
             findingLocation = false;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            if (kamikazeType)
+            {
+                collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
+                StartCoroutine(Death());
+                StartCoroutine(CamShake());
+
+                Vector2 direction = (transform.position - collision.transform.position).normalized;
+                player.GetComponent<Rigidbody2D>().AddForce(direction * strength, ForceMode2D.Impulse);
+            }
+        }
+
+        if (collision.gameObject.tag == "Planet")
+        {
+            StartCoroutine(WaitToMove());
+        }
+    }
+
+    IEnumerator CamShake()
+    {
+        cam.GetComponent<CamShakePog>().enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        cam.GetComponent<CamShakePog>().enabled = false;
     }
 
     IEnumerator Death()

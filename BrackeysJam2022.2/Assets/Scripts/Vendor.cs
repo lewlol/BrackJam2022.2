@@ -14,9 +14,6 @@ public class Vendor : MonoBehaviour
     public GameObject distance;
     public GameObject nuggets;
 
-    //Vendor UI
-    public GameObject vendorUI;
-
     //Alien Names
     public string[] firstname;
     public string[] lastname;
@@ -46,7 +43,6 @@ public class Vendor : MonoBehaviour
         healthFuel = GameObject.Find("Bars");
         distance = GameObject.Find("EarthDistance");
         nuggets = GameObject.Find("NuggetCount");
-        vendorUI = GameObject.Find("VendorUI");
 
 
         alienname = GameObject.Find("AlienName").GetComponent<Text>();
@@ -90,7 +86,6 @@ public class Vendor : MonoBehaviour
         distance.SetActive(false);
         nuggets.SetActive(false);
 
-        vendorUI.SetActive(true);
         alienname.enabled = true;
         alien.enabled = true;
         alienBG.GetComponent<Image>().enabled = true;
@@ -106,9 +101,6 @@ public class Vendor : MonoBehaviour
         distance.SetActive(true);
         nuggets.SetActive(true);
 
-        vendorUI.SetActive(false);
-
-        vendorUI.SetActive(false);
         alienname.enabled = false;
         alien.enabled = false;
         alienBG.GetComponent<Image>().enabled = false;
