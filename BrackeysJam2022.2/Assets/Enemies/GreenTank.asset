@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec938e38a5d9c241b0ef7d622076c47, type: 3}
+  m_Name: GreenTank
+  m_EditorClassIdentifier: 
+  health: 0
+  speed: 0
+  chaseRadius: 0
+  attackRadius: 0
+  damage: 0
+  sprite: {fileID: 0}
+  dParticles: {fileID: 0}
+  redTeam: 0
+  greenTeam: 0
+  blueTeam: 0
+  yellowTeam: 0
+  shooterType: 0
+  kamikazeType: 0
+  friendlyState: 0
+  neutralState: 0
+  agressiveState: 0
+  bulletSpeed: 0
+  bulletDelay: 0
+  bulletLifetime: 0
+  bullet: {fileID: 0}

@@ -17,8 +17,8 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
 
     private void Start()
     {
-        health = 100;
-        maxHealth = 100;
+        health = 150;
+        maxHealth = 150;
 
         fuel = 100;
         maxFuel = 100;
