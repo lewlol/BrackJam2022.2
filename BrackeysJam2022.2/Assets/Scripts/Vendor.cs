@@ -6,6 +6,10 @@ using UnityEditor;
 
 public class Vendor : MonoBehaviour
 {
+    //Player Reference
+    public GameObject player;
+    public GameObject bullet;
+
     //Main Canvas
     public GameObject canvas;
 
@@ -42,12 +46,16 @@ public class Vendor : MonoBehaviour
     private Upgrades activeUpgrade;
     //Upgrade Offer Text
     public Text upgradetext;
+    public Text acceptText;
+
+    bool boughtUpgrade;
 
     private void Awake()
     {
         healthFuel = GameObject.Find("Bars");
         distance = GameObject.Find("EarthDistance");
         nuggets = GameObject.Find("NuggetCount");
+        player = GameObject.Find("Spaceship");
 
 
         alienname = GameObject.Find("AlienName").GetComponent<Text>();
@@ -57,6 +65,7 @@ public class Vendor : MonoBehaviour
         bg = GameObject.Find("BG");
         alienBG = GameObject.Find("Avatar");
         upgradetext = GameObject.Find("UpgradeText").GetComponent<Text>();
+        acceptText = GameObject.Find("AcceptText").GetComponent<Text>();
 
         int fName = Random.Range(0, firstname.Length);
         int lName = Random.Range(0, lastname.Length);
@@ -88,7 +97,32 @@ public class Vendor : MonoBehaviour
             upgradetext.text = "I Can Upgrade Your " + upgrade[randomUpgrade].name + " For " + upgrade[randomUpgrade].cost;
         }
     }
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            if (Input.GetKeyDown(KeyCode.Y) && !boughtUpgrade)
+            {
+                upgradetext.text = "Thank You For Purchasing";
+                acceptText.text = null;
+                if(activeUpgrade.upgradeInt == 0)
+                {
+                    //Add Damage
+                    bullet.GetComponent<Bullet>().damage += activeUpgrade.value;
+                }
+                else if(activeUpgrade.upgradeInt == 1)
+                {
+                    //Repair
+                    player.GetComponent<SpaceshipStats>().health = player.GetComponent<SpaceshipStats>().maxHealth;
+                }else if(activeUpgrade.upgradeInt == 2)
+                {
+                    //Max HP Increase
+                    player.GetComponent<SpaceshipStats>().maxHealth += activeUpgrade.value;
+                    player.GetComponent<SpaceshipStats>().health += activeUpgrade.value;
+                }
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
