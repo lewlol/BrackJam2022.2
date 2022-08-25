@@ -40,7 +40,7 @@ public class Main : UnityEngine.MonoBehaviour
         maincanvas.SetActive(false);
         var p = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
         button.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(2f);
         Destroy(p);
         infocanvas.SetActive(true);
         menu.SetActive(false);
