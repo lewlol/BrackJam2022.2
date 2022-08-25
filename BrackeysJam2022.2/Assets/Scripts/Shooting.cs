@@ -8,6 +8,8 @@ public class Shooting : UnityEngine.MonoBehaviour
     public float bSpeed = 5f;
     private float bulletLife = 2f;
 
+    public AudioSource shootSource;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -21,5 +23,6 @@ public class Shooting : UnityEngine.MonoBehaviour
         Rigidbody2D bulRB = bul.GetComponent<Rigidbody2D>();
         bulRB.AddForce(bul.transform.up * bSpeed, ForceMode2D.Impulse);
         activeBullet.GetComponent<Bullet>().lifetime = bulletLife;
+        shootSource.Play();
     }
 }

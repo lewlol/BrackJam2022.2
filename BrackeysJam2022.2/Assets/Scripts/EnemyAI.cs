@@ -94,6 +94,11 @@ public class EnemyAI : MonoBehaviour
     //Enemy Drops
     [SerializeField] private GameObject fuelDrop;
 
+    //Sounds
+    public AudioClip kamiSound;
+    public AudioSource shootingSource;
+    public AudioSource deathSource;
+
     private void Awake()
     {
         //Assignables
@@ -236,6 +241,7 @@ public class EnemyAI : MonoBehaviour
 
             bul.GetComponent<eBullet>().StatsAssigned();
 
+            shootingSource.Play();
 
             //Reset Timer
             delay = bulletDelay;
@@ -310,6 +316,7 @@ public class EnemyAI : MonoBehaviour
         if(health <= 0)
         {
             dead = true;
+            deathSource.Play();
             StartCoroutine(Death());
         }
 
@@ -331,6 +338,9 @@ public class EnemyAI : MonoBehaviour
                 collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
                 StartCoroutine(Death());
                 StartCoroutine(CamShake());
+
+                deathSource.clip = kamiSound;
+                deathSource.Play();
 
                 Vector2 direction = (transform.position + collision.transform.position).normalized;
                 player.GetComponent<Rigidbody2D>().AddForce(direction * strength, ForceMode2D.Impulse);

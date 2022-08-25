@@ -14,6 +14,8 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
 
     [SerializeField] private GameObject particles;
     [SerializeField] private GameObject retryMenu;
+    [SerializeField] private AudioSource dSound;
+    [SerializeField] private AudioSource hitSound;
 
     private void Start()
     {
@@ -29,8 +31,10 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        hitSound.Play();
         if(health <= 0)
         {
+            dSound.Play();
             StartCoroutine(Death());
         }
     }

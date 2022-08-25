@@ -71,12 +71,12 @@ public class conspacemove : MonoBehaviour
                 extraspeed = 15;
             }
 
-            if(yAxis > 0 && moveSource.isPlaying == false)
+            if(yAxis > 0 && moveSource.isPlaying == false && stats.fuel > 0)
             {
                 moveSource.clip = move;
                 moveSource.Play();
             }
-            if(yAxis <= 0)
+            else if(yAxis <= 0 && stats.fuel <= 0)
             {
                 moveSource.Stop();
             }
