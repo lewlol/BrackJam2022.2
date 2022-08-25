@@ -13,6 +13,7 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
     public float nuggets;
 
     [SerializeField] private GameObject particles;
+    [SerializeField] private GameObject retryMenu;
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
             StartCoroutine(Death());
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BlackHole")
         {
@@ -60,13 +61,17 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
     {
         CircleCollider2D cc = GetComponent<CircleCollider2D>();
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         cc.enabled = false;
         sr.enabled = false;
 
         var part = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
 
         yield return new WaitForSeconds(3f);
+
+        retryMenu.SetActive(true);
 
         Destroy(part);
         Destroy(gameObject);
