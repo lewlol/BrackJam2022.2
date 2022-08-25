@@ -8,6 +8,9 @@ public class GameEnding : UnityEngine.MonoBehaviour
     public GameObject Player;
     public Rigidbody2D prigidbody;
     public Canvas ui;
+    public GameObject earth;
+    public Camera maincam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,9 @@ public class GameEnding : UnityEngine.MonoBehaviour
     {
         ui.enabled = false;
         prigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        maincam.GetComponent<CamFollow>().target = earth.transform;
         yield return new WaitForSeconds(2f);
+
         SceneManager.LoadScene(1);
     }
 
