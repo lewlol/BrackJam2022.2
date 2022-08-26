@@ -69,6 +69,9 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
         }else if (fuel <= 0)
         {
             outOfFuel.text = "OUT OF FUEL";
+        }else
+        {
+            outOfFuel.text = null;
         }
     }
 
