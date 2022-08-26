@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooting : UnityEngine.MonoBehaviour
 {
     [SerializeField] private GameObject activeBullet;
-    public float bSpeed = 5f;
+    public float bSpeed = 7f;
     private float bulletLife = 2f;
 
     public AudioSource shootSource;

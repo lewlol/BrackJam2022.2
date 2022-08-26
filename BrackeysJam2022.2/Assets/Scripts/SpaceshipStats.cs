@@ -42,6 +42,7 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
     {
         if (collision.gameObject.tag == "BlackHole")
         {
+            dSound.Play();
             StartCoroutine(Death());
         }
     }

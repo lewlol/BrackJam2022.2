@@ -30,7 +30,7 @@ public class Planet : UnityEngine.MonoBehaviour
     public AudioSource explodeSource;
     private void Awake()
     {
-        maxHealth = Random.Range(3, 15);
+        maxHealth = Random.Range(10, 26);
         health = maxHealth;
         pShake = GetComponent<PlanetShake>();
 

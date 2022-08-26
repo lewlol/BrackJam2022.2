@@ -51,6 +51,12 @@ public class eBullet : UnityEngine.MonoBehaviour
                 SpawnParticles();
             }
         }
+
+        if (collision.gameObject.tag == "Planet")
+        {
+            Destroy(gameObject);
+            SpawnParticles();
+        }
     }
 
     void SpawnParticles()
