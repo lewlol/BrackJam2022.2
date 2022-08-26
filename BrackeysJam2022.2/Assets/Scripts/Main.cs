@@ -18,7 +18,7 @@ public class Main : UnityEngine.MonoBehaviour
     public GameObject fadeIn;
     public GameObject fadeOut;
 
-
+    public AudioSource explodeSource;
 
     private void Awake()
     {
@@ -42,6 +42,7 @@ public class Main : UnityEngine.MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            explodeSource.Play();
             StartCoroutine(EndGame());
         }
     }

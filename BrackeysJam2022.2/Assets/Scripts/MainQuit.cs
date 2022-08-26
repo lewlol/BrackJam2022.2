@@ -8,6 +8,8 @@ public class MainQuit : UnityEngine.MonoBehaviour
     public GameObject particles;
     public GameObject button;
     public GameObject canvas;
+
+    public AudioSource explodeSource;
     private void OnMouseEnter()
     {
         button.GetComponent<Spin>().enabled = true;
@@ -25,6 +27,7 @@ public class MainQuit : UnityEngine.MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            explodeSource.Play();
             StartCoroutine(EndGame());
         }
     }

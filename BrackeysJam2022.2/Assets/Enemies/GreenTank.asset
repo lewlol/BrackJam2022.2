@@ -29,6 +29,6 @@ MonoBehaviour:
   neutralState: 1
   agressiveState: 0
   bulletSpeed: 2
-  bulletDelay: 5
+  bulletDelay: 3
   bulletLifetime: 3
   bullet: {fileID: 2036608387472982087, guid: b8b2fd7af2c806e4f95b70f66b4737dc, type: 3}
