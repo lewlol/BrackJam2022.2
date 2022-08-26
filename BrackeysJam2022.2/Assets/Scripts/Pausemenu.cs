@@ -26,6 +26,24 @@ public class Pausemenu : MonoBehaviour
         {
             DeactivateMenu();
         }
+
+
+        if(Input.GetKeyDown(KeyCode.R) && isPaused )
+        {
+            DeactivateMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M) && isPaused)
+        {
+            MainMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q) && isPaused)
+        {
+            Exit();
+        }
+
+
     }
 
     void ActivateMenu()
@@ -45,10 +63,18 @@ public class Pausemenu : MonoBehaviour
         othercanvas.SetActive(true);
     }
 
-    public void resume()
+    public void MainMenu()
     {
-        DeactivateMenu();
+        SceneManager.LoadScene(2);
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+        Debug.Log("quited");
+    }
+
+
 
 
 
