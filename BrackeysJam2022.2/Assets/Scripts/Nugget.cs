@@ -5,10 +5,12 @@ using UnityEngine;
 public class Nugget : UnityEngine.MonoBehaviour
 {
     [SerializeField] private GameObject nugParticles;
+    public AudioSource pickupSource;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
+            pickupSource.Play();
             StartCoroutine(pickupnugget());
             other.GetComponent<SpaceshipStats>().nuggets++;
         }

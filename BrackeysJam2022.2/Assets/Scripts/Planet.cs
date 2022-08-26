@@ -24,6 +24,10 @@ public class Planet : UnityEngine.MonoBehaviour
     private Vector3 location;
 
     public GameObject vendor;
+
+    //Sounds
+    public AudioSource hitSource;
+    public AudioSource explodeSource;
     private void Awake()
     {
         maxHealth = Random.Range(3, 15);
@@ -36,9 +40,11 @@ public class Planet : UnityEngine.MonoBehaviour
     {
         health -= damage;
         pShake.shakeDuration = 0.01f;
+        hitSource.Play();
         StartCoroutine(ShakePlanet());  
         if (health <= 0)
         {
+            explodeSource.Play();
             SpawnFuelCan();  
             SpawnNuggets();
             StartCoroutine(DestroyPlanet());   

@@ -51,8 +51,13 @@ public class Vendor : MonoBehaviour
     bool boughtUpgrade;
     bool purchaseBool;
 
+    public AudioClip deny;
+    public AudioClip purchase;
+    private AudioSource audio;
+
     private void Awake()
     {
+        audio = GetComponentInChildren<AudioSource>();
         healthFuel = GameObject.Find("Bars");
         distance = GameObject.Find("EarthDistance");
         nuggets = GameObject.Find("NuggetCount");
@@ -105,10 +110,14 @@ public class Vendor : MonoBehaviour
         {
             if (player.GetComponent<SpaceshipStats>().nuggets < activeUpgrade.cost)
             {
+                audio.clip = deny;
+                audio.Play();
                 StartCoroutine(Poor());
             }
             else
             {
+                audio.clip = purchase;
+                audio.Play();
                 upgradetext.text = "Thank You For Purchasing";
                 acceptText.text = null;
                 if (activeUpgrade.upgradeInt == 0)

@@ -335,7 +335,7 @@ public class EnemyAI : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (kamikazeType)
+            if (kamikazeType && agressiveState)
             {
                 collision.gameObject.GetComponent<SpaceshipStats>().TakeDamage(damage);
                 StartCoroutine(Death());
