@@ -70,19 +70,22 @@ public class conspacemove : MonoBehaviour
             {
                 extraspeed = 15;
             }
+        }
 
-            if (Input.GetKeyUp(KeyCode.W) && moveSource.isPlaying == true)
-            {
-                Debug.Log("GetKey STOP SOUND");
-                moveSource.Stop();
-            }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            moveSource.Stop();
+        }
 
-            if(Input.GetKey(KeyCode.W) && moveSource.isPlaying == false && stats.fuel > 0)
-            {
-                Debug.Log("Playing Move Sound");
-                moveSource.clip = move;
-                moveSource.Play();
-            }
+        if (Input.GetKey(KeyCode.W) && moveSource.isPlaying == false && stats.fuel > 0)
+        {
+            moveSource.clip = move;
+            moveSource.Play();
+        }
+
+        if (!hasFuel)
+        {
+            moveSource.Stop();
         }
     }
 

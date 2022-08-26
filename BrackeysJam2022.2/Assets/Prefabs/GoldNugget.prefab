@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2045985719141403745}
   - component: {fileID: 2045985719141403750}
   - component: {fileID: 461365079028927355}
+  - component: {fileID: -5681947666278125687}
   m_Layer: 0
   m_Name: GoldNugget
   m_TagString: Untagged
@@ -127,6 +128,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nugParticles: {fileID: 6371547047630893509, guid: 2512b502be2a9464baa372e6eb6e26ba, type: 3}
   pickupSource: {fileID: 1273685422259551388}
+--- !u!114 &-5681947666278125687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045985719141403751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c74503bb2f86f47b0fae58bb546251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
 --- !u!1 &4676667586572141486
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,6 +93,7 @@ public class EnemyAI : MonoBehaviour
 
     //Enemy Drops
     [SerializeField] private GameObject fuelDrop;
+    [SerializeField] private GameObject heartDrop;
 
     //Sounds
     public AudioClip kamiSound;
@@ -162,6 +163,7 @@ public class EnemyAI : MonoBehaviour
 
         //FindPlayer
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     void Movement() //Enemy Movement
@@ -364,10 +366,20 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator Death()
     {
+        //FuelDrop
         int fDrop = Random.Range(0, 2);
         if(fDrop == 0)
         {
-            Instantiate(fuelDrop, gameObject.transform.position, Quaternion.identity);
+            Vector3 offset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
+            Instantiate(fuelDrop, gameObject.transform.position + offset, Quaternion.identity);
+        }
+
+        //HeartDrop
+        int hDrop = Random.Range(0, 2);
+        if(hDrop == 0)
+        {
+            Vector3 offset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
+            Instantiate(heartDrop, gameObject.transform.position + offset, Quaternion.identity);
         }
 
         CircleCollider2D cc = GetComponent<CircleCollider2D>();

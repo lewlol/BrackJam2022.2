@@ -400,6 +400,7 @@ MonoBehaviour:
   homePlanet: {fileID: 0}
   player: {fileID: 0}
   fuelDrop: {fileID: 267636531003836247, guid: 445e6a8f66d693343a2f9adb38789533, type: 3}
+  heartDrop: {fileID: 4458961404634031001, guid: 913f7b8f24191d543b92c059e58aba71, type: 3}
   kamiSound: {fileID: 8300000, guid: e23a3edd25bb2404a9dcfb689aee3e07, type: 3}
   shootingSource: {fileID: 169959281307616565}
   deathSource: {fileID: 6315758071875475005}
