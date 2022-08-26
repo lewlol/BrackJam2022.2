@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SpaceshipStats : UnityEngine.MonoBehaviour
 {
     public float health;
@@ -16,6 +16,8 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
     [SerializeField] private GameObject retryMenu;
     [SerializeField] private AudioSource dSound;
     [SerializeField] private AudioSource hitSound;
+
+    [SerializeField] private Text outOfFuel;
 
     private void Start()
     {
@@ -59,6 +61,14 @@ public class SpaceshipStats : UnityEngine.MonoBehaviour
         if(health > maxHealth)
         {
             health = maxHealth;
+        }
+
+        if(fuel < 10 && fuel >= 0.001)
+        {
+            outOfFuel.text = "YOU ARE LOW ON FUEL";
+        }else if (fuel <= 0)
+        {
+            outOfFuel.text = "OUT OF FUEL";
         }
     }
 

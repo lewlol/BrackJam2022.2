@@ -6,11 +6,15 @@ public class Retry : MonoBehaviour
 {
     public GameObject fadeOut;
     public GameObject tryagain;
-
+    public SpaceshipStats stats;
 
 
     private void Update()
     {
+        if(stats.fuel <= 0)
+        {
+            tryagain.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.R) && tryagain.activeSelf == true)
         {
             StartCoroutine(Fade());
