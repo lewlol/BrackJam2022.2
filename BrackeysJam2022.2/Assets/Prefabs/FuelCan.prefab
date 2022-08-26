@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSource: {fileID: 3399722554141796385}
+  buffText: {fileID: 334115655126860632, guid: cc627f24094837b4fb2102de0adc1158, type: 3}
 --- !u!114 &7262926021977931405
 MonoBehaviour:
   m_ObjectHideFlags: 0

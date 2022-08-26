@@ -55,6 +55,8 @@ public class Vendor : MonoBehaviour
     public AudioClip purchase;
     private AudioSource audio;
 
+    [SerializeField] private GameObject buffText;
+
     private void Awake()
     {
         audio = GetComponentInChildren<AudioSource>();
@@ -120,21 +122,30 @@ public class Vendor : MonoBehaviour
                 audio.Play();
                 upgradetext.text = "Thank You For Purchasing";
                 acceptText.text = null;
+
+                Vector3 offset = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0);
+                var bText = Instantiate(buffText, player.transform.position + offset, Quaternion.identity);
+                TextMesh tm = bText.GetComponent<TextMesh>();
+
                 if (activeUpgrade.upgradeInt == 0)
                 {
                     //Add Damage
-                    bullet.GetComponent<Bullet>().damage += activeUpgrade.value;
+                    bullet.GetComponent<Bullet>().damage += activeUpgrade.value;       
+                    tm.text = "+" + activeUpgrade.value + " Damage";
                 }
                 else if (activeUpgrade.upgradeInt == 1)
                 {
                     //Repair
                     player.GetComponent<SpaceshipStats>().health = player.GetComponent<SpaceshipStats>().maxHealth;
+                    tm.text = "Health Restored!";
                 }
                 else if (activeUpgrade.upgradeInt == 2)
                 {
                     //Max HP Increase
                     player.GetComponent<SpaceshipStats>().maxHealth += activeUpgrade.value;
                     player.GetComponent<SpaceshipStats>().health += activeUpgrade.value;
+
+                    tm.text = "+" + activeUpgrade.value + " MaxHP";
                 }
                 player.GetComponent<SpaceshipStats>().nuggets -= activeUpgrade.cost;
             }

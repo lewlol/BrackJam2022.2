@@ -388,11 +388,11 @@ public class EnemyAI : MonoBehaviour
         cc.enabled = false;
         sr.enabled = false;
 
-        Instantiate(dParticles, gameObject.transform.position, Quaternion.identity);
+        var particl = Instantiate(dParticles, gameObject.transform.position, Quaternion.identity);
 
         yield return new WaitForSeconds(1f);
 
-        Destroy(dParticles);
+        Destroy(particl);
         Destroy(gameObject);
     }
     IEnumerator WaitToMove()

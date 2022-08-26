@@ -438,3 +438,4 @@ MonoBehaviour:
   acceptText: {fileID: 0}
   deny: {fileID: 8300000, guid: 73faa95f0176cb144a7144b8382f2e81, type: 3}
   purchase: {fileID: 8300000, guid: adbdb6cd282a3824db15649c453b5efe, type: 3}
+  buffText: {fileID: 334115655126860632, guid: cc627f24094837b4fb2102de0adc1158, type: 3}

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nugParticles: {fileID: 6371547047630893509, guid: 2512b502be2a9464baa372e6eb6e26ba, type: 3}
   pickupSource: {fileID: 1273685422259551388}
+  buffText: {fileID: 334115655126860632, guid: cc627f24094837b4fb2102de0adc1158, type: 3}
 --- !u!114 &-5681947666278125687
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class Nugget : UnityEngine.MonoBehaviour
 {
     [SerializeField] private GameObject nugParticles;
     public AudioSource pickupSource;
+    public GameObject buffText; 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
@@ -13,6 +14,12 @@ public class Nugget : UnityEngine.MonoBehaviour
             pickupSource.Play();
             StartCoroutine(pickupnugget());
             other.GetComponent<SpaceshipStats>().nuggets++;
+
+            Vector3 offset = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0);
+            var bText = Instantiate(buffText, transform.position + offset, Quaternion.identity);
+            TextMesh tm = bText.GetComponent<TextMesh>();
+            tm.text = "+1 Nugget";
+            tm.color = Color.yellow;
         }
     }
 
