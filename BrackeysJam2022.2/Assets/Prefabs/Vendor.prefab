@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 3986455979624542089, guid: e5c3ecb1ceee6924998b5d96e283d827, type: 3}
   canvas: {fileID: 0}
   healthFuel: {fileID: 0}
   distance: {fileID: 0}

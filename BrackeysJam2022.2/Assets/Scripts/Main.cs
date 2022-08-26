@@ -79,6 +79,6 @@ public class Main : UnityEngine.MonoBehaviour
     {
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

@@ -28,7 +28,7 @@ public class GameEnding : UnityEngine.MonoBehaviour
         yield return new WaitForSeconds(1f);
         fadeout.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
 }
