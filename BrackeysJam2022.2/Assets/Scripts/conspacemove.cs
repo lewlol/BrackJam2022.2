@@ -23,6 +23,8 @@ public class conspacemove : MonoBehaviour
     public AudioSource moveSource;
     public AudioClip move;
     public AudioClip booster;
+
+    bool isBoosting;
     void Start()
     {
         tr = GetComponent<TrailRenderer>();
@@ -54,7 +56,7 @@ public class conspacemove : MonoBehaviour
             HidingBoost();
 
             //Boost Detection
-            if (Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f && yAxis > 0)
+            if (Input.GetKeyDown(KeyCode.Space) && stats.fuel > 10f && yAxis > 0 && !isBoosting)
             {
                 Boost();
                 boostSource.clip = booster;
@@ -116,11 +118,13 @@ public class conspacemove : MonoBehaviour
     }
     IEnumerator Boosting()
     {
-        stats.fuel -= 5;
+        isBoosting = true;
+        stats.fuel -= 3;
         yield return new WaitForSeconds(0.1f);
         extraspeed = 100;
         yield return new WaitForSeconds(0.2f);
         extraspeed = 15;
+        isBoosting=false;
     }
 
     void HidingBoost()
