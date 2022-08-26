@@ -35,6 +35,7 @@ public class Pausemenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M) && isPaused)
         {
+            DeactivateMenu();
             MainMenu();
         }
 

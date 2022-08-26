@@ -17,6 +17,14 @@ public class Main : UnityEngine.MonoBehaviour
     //Fades
     public GameObject fadeIn;
     public GameObject fadeOut;
+
+
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     private void OnMouseEnter()
     {
         button.GetComponent<Spin>().enabled = true;
