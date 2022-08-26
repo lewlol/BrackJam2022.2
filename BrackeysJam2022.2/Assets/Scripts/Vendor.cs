@@ -53,12 +53,17 @@ public class Vendor : MonoBehaviour
 
     public AudioClip deny;
     public AudioClip purchase;
-    private AudioSource audio;
+    public AudioSource audio;
+    public AudioSource tradertheme;
+
+    public AudioSource music;
+    float maxVolume = 0.2f;
 
     [SerializeField] private GameObject buffText;
 
     private void Awake()
     {
+        music = GameObject.Find("music").GetComponent<AudioSource>();
         audio = GetComponentInChildren<AudioSource>();
         healthFuel = GameObject.Find("Bars");
         distance = GameObject.Find("EarthDistance");
@@ -108,6 +113,10 @@ public class Vendor : MonoBehaviour
     }
     private void Update()
     {
+        if (purchaseBool && tradertheme.volume < maxVolume)
+        {
+            tradertheme.volume += Time.deltaTime;
+        }
         if (Input.GetKeyDown(KeyCode.Y) && !boughtUpgrade && purchaseBool)
         {
             if (player.GetComponent<SpaceshipStats>().nuggets < activeUpgrade.cost)
@@ -164,6 +173,8 @@ public class Vendor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            music.Pause();
+            tradertheme.Play();
             purchaseBool = true;
             OpenMenu();
         }
@@ -172,6 +183,9 @@ public class Vendor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            tradertheme.volume = 0f;
+            music.Play();
+            tradertheme.Stop();
             purchaseBool = false;
             CloseMenu();
         }
