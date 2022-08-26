@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 public class Retry : MonoBehaviour
 {
     public GameObject fadeOut;
+    public GameObject tryagain;
+
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && tryagain.activeSelf == true)
+        {
+            StartCoroutine(Fade());
+        }
+    }
     public void TryAgain()
     {
         StartCoroutine(Fade());
