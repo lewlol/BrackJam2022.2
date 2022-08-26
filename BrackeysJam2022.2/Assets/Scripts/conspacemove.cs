@@ -124,6 +124,7 @@ public class conspacemove : MonoBehaviour
         extraspeed = 100;
         yield return new WaitForSeconds(0.2f);
         extraspeed = 15;
+        yield return new WaitForSeconds(0.3f);
         isBoosting=false;
     }
 
