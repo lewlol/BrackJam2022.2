@@ -80,7 +80,7 @@ public class Vendor : MonoBehaviour
         int alienA = Random.Range(0, aliens.Length);
 
         alien.sprite = aliens[alienA];
-        alienname.text = firstname[fName] + " " + lastname[lName];
+        alienname.text = firstname[fName] + "  " + lastname[lName];
         planetdescription.text = "Welcome to  " + planetname[pname];
         dialoguetxt.text = dialogue[dial];
 
