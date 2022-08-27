@@ -108,7 +108,7 @@ public class conspacemove : MonoBehaviour
     {
        if(xAxis != 0 || yAxis != 0)
         {
-            stats.fuel -= Time.deltaTime;
+            stats.fuel -= Time.deltaTime * 1.4f;
         }
     }
 
