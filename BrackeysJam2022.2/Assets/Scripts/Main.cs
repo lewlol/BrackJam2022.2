@@ -13,6 +13,7 @@ public class Main : UnityEngine.MonoBehaviour
     public GameObject menu;
     public GameObject infomenu;
     public bool info;
+    public bool buttonshot;
 
     //Fades
     public GameObject fadeIn;
@@ -40,7 +41,7 @@ public class Main : UnityEngine.MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" && !buttonshot)
         {
             explodeSource.Play();
             StartCoroutine(EndGame());
@@ -49,6 +50,7 @@ public class Main : UnityEngine.MonoBehaviour
 
     IEnumerator EndGame()
     {
+        buttonshot = true;
         info = true;
         var p = Instantiate(particles, gameObject.transform.position, Quaternion.identity);
         button.GetComponent<SpriteRenderer>().enabled = false;
@@ -56,6 +58,7 @@ public class Main : UnityEngine.MonoBehaviour
         startText.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         fadeOut.SetActive(true);
+        Destroy(p);
         yield return new WaitForSeconds(1.5f);
 
         fadeIn.SetActive(true);
