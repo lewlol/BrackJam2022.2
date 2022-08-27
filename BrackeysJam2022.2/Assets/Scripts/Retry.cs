@@ -14,10 +14,15 @@ public class Retry : MonoBehaviour
         if(stats.fuel <= 0)
         {
             tryagain.SetActive(true);
+
         }
         if (Input.GetKeyDown(KeyCode.R) && tryagain.activeSelf == true)
         {
             StartCoroutine(Fade());
+        }
+        if(stats.fuel >= 1)
+        {
+            tryagain.SetActive(false);
         }
     }
     public void TryAgain()
