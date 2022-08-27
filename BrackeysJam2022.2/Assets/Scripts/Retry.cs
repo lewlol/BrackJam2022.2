@@ -20,7 +20,7 @@ public class Retry : MonoBehaviour
         {
             StartCoroutine(Fade());
         }
-        if(stats.fuel >= 1)
+        if(stats.fuel >= 1 && stats.health >= 1)
         {
             tryagain.SetActive(false);
         }
