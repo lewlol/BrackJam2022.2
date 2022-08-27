@@ -50,6 +50,7 @@ public class Vendor : MonoBehaviour
 
     bool boughtUpgrade;
     bool purchaseBool;
+    bool poorBool;
 
     public AudioClip deny;
     public AudioClip purchase;
@@ -117,46 +118,54 @@ public class Vendor : MonoBehaviour
         {
             tradertheme.volume += Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.Y) && !boughtUpgrade && purchaseBool)
+        if (Input.GetKeyDown(KeyCode.Y) && !boughtUpgrade)
         {
-            if (player.GetComponent<SpaceshipStats>().nuggets < activeUpgrade.cost)
+            if (player.GetComponent<SpaceshipStats>().nuggets < activeUpgrade.cost && !poorBool)
             {
-                audio.clip = deny;
-                audio.Play();
-                StartCoroutine(Poor());
+                if (!poorBool)
+                {
+                    audio.clip = deny;
+                    audio.Play();
+                    StartCoroutine(Poor());
+                }
             }
             else
             {
-                audio.clip = purchase;
-                audio.Play();
-                upgradetext.text = "Thank You For Purchasing";
-                acceptText.text = null;
-
-                Vector3 offset = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0);
-                var bText = Instantiate(buffText, player.transform.position + offset, Quaternion.identity);
-                TextMesh tm = bText.GetComponent<TextMesh>();
-
-                if (activeUpgrade.upgradeInt == 0)
+                if (!poorBool)
                 {
-                    //Add Damage
-                    bullet.GetComponent<Bullet>().damage += activeUpgrade.value;       
-                    tm.text = "+" + activeUpgrade.value + " Damage";
-                }
-                else if (activeUpgrade.upgradeInt == 1)
-                {
-                    //Repair
-                    player.GetComponent<SpaceshipStats>().health = player.GetComponent<SpaceshipStats>().maxHealth;
-                    tm.text = "Health Restored!";
-                }
-                else if (activeUpgrade.upgradeInt == 2)
-                {
-                    //Max HP Increase
-                    player.GetComponent<SpaceshipStats>().maxHealth += activeUpgrade.value;
-                    player.GetComponent<SpaceshipStats>().health += activeUpgrade.value;
+                    audio.clip = purchase;
+                    audio.Play();
+                    upgradetext.text = "Thank You For Purchasing";
+                    acceptText.text = null;
 
-                    tm.text = "+" + activeUpgrade.value + " MaxHP";
+                    Vector3 offset = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0);
+                    var bText = Instantiate(buffText, player.transform.position + offset, Quaternion.identity);
+                    TextMesh tm = bText.GetComponent<TextMesh>();
+
+                    if (activeUpgrade.upgradeInt == 0)
+                    {
+                        //Add Damage
+                        bullet.GetComponent<Bullet>().damage += activeUpgrade.value;
+                        tm.text = "+" + activeUpgrade.value + " Damage";
+                    }
+                    else if (activeUpgrade.upgradeInt == 1)
+                    {
+                        //Repair
+                        player.GetComponent<SpaceshipStats>().health = player.GetComponent<SpaceshipStats>().maxHealth;
+                        tm.text = "Health Restored!";
+                    }
+                    else if (activeUpgrade.upgradeInt == 2)
+                    {
+                        //Max HP Increase
+                        player.GetComponent<SpaceshipStats>().maxHealth += activeUpgrade.value;
+                        player.GetComponent<SpaceshipStats>().health += activeUpgrade.value;
+
+                        tm.text = "+" + activeUpgrade.value + " MaxHP";
+                    }
+                    player.GetComponent<SpaceshipStats>().nuggets -= activeUpgrade.cost;
+                    boughtUpgrade = true;
+                    poorBool = true;
                 }
-                player.GetComponent<SpaceshipStats>().nuggets -= activeUpgrade.cost;
             }
         }
 
@@ -193,7 +202,8 @@ public class Vendor : MonoBehaviour
 
     void OpenMenu()
     {
-
+        Debug.Log("Vendor Menu Opened");
+        acceptText.text = "PRESS [ Y ] TO ACCEPT";
         healthFuel.SetActive(false);
         distance.SetActive(false);
         nuggets.SetActive(false);
@@ -226,8 +236,8 @@ public class Vendor : MonoBehaviour
     }
     IEnumerator Poor()
     {
+        poorBool = true;
         string beforeUpgrade = upgradetext.text;
-        string accText = acceptText.text;
 
         upgradetext.text = "You Don't Have Enough Nuggets";
         acceptText.text = null;
@@ -235,6 +245,8 @@ public class Vendor : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         upgradetext.text = beforeUpgrade;
-        acceptText.text = accText;
+        acceptText.text = "PRESS [ Y ] TO ACCEPT";
+
+        poorBool = false;
     }
 }

@@ -357,6 +357,16 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "BlackHole")
+        {
+            dead = true;
+            deathSource.Play();
+            StartCoroutine(Death());
+        }
+    }
+
     IEnumerator CamShake()
     {
         cam.GetComponent<CamShakePog>().enabled = true;
