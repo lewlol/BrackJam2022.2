@@ -8,9 +8,20 @@ public class RenderObjects : UnityEngine.MonoBehaviour
     [SerializeField] private GameObject player;
     public Camera cam;
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        RefreshObjects();
+        if(collision.gameObject.tag == "Planet" || collision.gameObject.tag == "Asteroid")
+        {
+            collision.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Planet" || collision.gameObject.tag == "Asteroid")
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
     void RefreshObjects()
     {

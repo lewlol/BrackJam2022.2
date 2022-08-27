@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Planet
   - BlackHole
+  - Asteroid
   layers:
   - Default
   - TransparentFX
