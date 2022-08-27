@@ -2360,6 +2360,7 @@ MonoBehaviour:
   menu: {fileID: 1805541277}
   infomenu: {fileID: 1745819447}
   info: 0
+  buttonshot: 0
   fadeIn: {fileID: 4055337}
   fadeOut: {fileID: 308114951}
   explodeSource: {fileID: 23301556}
@@ -3290,6 +3291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBullet: {fileID: 3986455979624542089, guid: e5c3ecb1ceee6924998b5d96e283d827, type: 3}
   bSpeed: 10
+  player: {fileID: 2069568100}
   shootSource: {fileID: 1032608123}
 --- !u!114 &2069568105
 MonoBehaviour:

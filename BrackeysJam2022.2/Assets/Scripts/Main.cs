@@ -68,6 +68,7 @@ public class Main : UnityEngine.MonoBehaviour
         infocanvas.SetActive(true);
         menu.SetActive(false);
         infomenu.SetActive(true);
+        buttonshot = false;
         
     }
 

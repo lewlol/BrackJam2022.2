@@ -7,12 +7,13 @@ public class Shooting : UnityEngine.MonoBehaviour
     [SerializeField] private GameObject activeBullet;
     public float bSpeed = 7f;
     private float bulletLife = 2f;
+    public GameObject player;
 
     public AudioSource shootSource;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && player.GetComponent<SpaceshipStats>().fuel > 1)
         {
             Shoot();
         }
